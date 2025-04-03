@@ -71,6 +71,13 @@ if symbol:
         df = detect_support_resistance(df)
         pre_high, pre_low = get_premarket_levels(df)
 
+        # Time slicer
+        time_options = df["timestamp"].dt.strftime("%H:%M:%S").unique().tolist()
+        min_time = df["timestamp"].min()
+        max_time = df["timestamp"].max()
+        time_range = st.slider("Select Time Range:", min_value=min_time, max_value=max_time, value=(min_time, max_time))
+        df = df[(df["timestamp"] >= time_range[0]) & (df["timestamp"] <= time_range[1])]
+
         st.subheader(f"Live VWAP Chart: {symbol}")
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=df["timestamp"], y=df["close"], mode='lines', name='Close'))
