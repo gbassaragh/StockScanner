@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import io
 import requests
 import plotly.graph_objects as go
 
@@ -20,7 +21,7 @@ def fetch_intraday_data(symbol):
     }
     response = requests.get(AV_URL, params=params)
     if response.status_code == 200:
-        df = pd.read_csv(pd.compat.StringIO(response.text))
+        df = pd.read_csv(io.StringIO(response.text))
         df["timestamp"] = pd.to_datetime(df["timestamp"])
         df = df.sort_values("timestamp").reset_index(drop=True)
         return df
