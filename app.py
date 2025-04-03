@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-import io
 import requests
 import plotly.graph_objects as go
+import io
 
 # --- CONFIG ---
 API_KEY = "YR2MYD1XJHOX1UB7"
@@ -43,6 +43,20 @@ def get_premarket_levels(df):
         return None, None
     return premarket["high"].max(), premarket["low"].min()
 
+def detect_vwap_cross(df):
+    df["vwap_cross"] = ""
+    for i in range(1, len(df)):
+        if df.loc[i-1, "close"] < df.loc[i-1, "vwap"] and df.loc[i, "close"] > df.loc[i, "vwap"]:
+            df.loc[i, "vwap_cross"] = "↑ Cross"
+        elif df.loc[i-1, "close"] > df.loc[i-1, "vwap"] and df.loc[i, "close"] < df.loc[i, "vwap"]:
+            df.loc[i, "vwap_cross"] = "↓ Cross"
+    return df
+
+def detect_support_resistance(df):
+    df["support"] = df["low"].rolling(window=20, min_periods=1).min()
+    df["resistance"] = df["high"].rolling(window=20, min_periods=1).max()
+    return df
+
 # --- STREAMLIT UI ---
 st.set_page_config(page_title="VWAP Live Tracker", layout="wide")
 st.title("🔧 VWAP + Premarket Range Live Tracker")
@@ -53,6 +67,8 @@ if symbol:
     df = fetch_intraday_data(symbol)
     if not df.empty:
         df = calculate_vwap(df)
+        df = detect_vwap_cross(df)
+        df = detect_support_resistance(df)
         pre_high, pre_low = get_premarket_levels(df)
 
         st.subheader(f"Live VWAP Chart: {symbol}")
@@ -63,6 +79,22 @@ if symbol:
         if pre_high and pre_low:
             fig.add_hline(y=pre_high, line=dict(color="green", dash="dot"), name="Premarket High")
             fig.add_hline(y=pre_low, line=dict(color="red", dash="dot"), name="Premarket Low")
+
+        # Plot VWAP Cross tags
+        cross_df = df[df["vwap_cross"] != ""]
+        fig.add_trace(go.Scatter(
+            x=cross_df["timestamp"],
+            y=cross_df["close"],
+            mode="markers+text",
+            text=cross_df["vwap_cross"],
+            textposition="top center",
+            marker=dict(size=8, color="orange"),
+            name="VWAP Cross"
+        ))
+
+        # Optional: Show support/resistance zones (last levels)
+        fig.add_trace(go.Scatter(x=df["timestamp"], y=df["support"], line=dict(dash="dot", color="lightblue"), name="Support"))
+        fig.add_trace(go.Scatter(x=df["timestamp"], y=df["resistance"], line=dict(dash="dot", color="lightcoral"), name="Resistance"))
 
         fig.update_layout(height=600, xaxis_title="Time", yaxis_title="Price")
         st.plotly_chart(fig, use_container_width=True)
