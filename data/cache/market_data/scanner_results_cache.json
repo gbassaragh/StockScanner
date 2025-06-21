@@ -1,0 +1,234 @@
+{
+  "cache_metadata": {
+    "version": "1.0.0",
+    "created_timestamp": "2024-12-21T00:00:00.000Z",
+    "last_updated": "2024-12-21T00:00:00.000Z",
+    "cache_expiry": "2024-12-21T23:59:59.999Z",
+    "total_securities_scanned": 0,
+    "successful_scans": 0,
+    "failed_scans": 0,
+    "scan_duration_seconds": 0.0,
+    "thread_pool_max_threads": 20,
+    "qthread_pool_active": false,
+    "real_time_updates_enabled": false,
+    "last_full_scan_timestamp": null,
+    "next_scheduled_scan": null
+  },
+  "scan_configuration": {
+    "criteria": {
+      "min_price": 1.0,
+      "max_price": 500.0,
+      "min_volume": 100000,
+      "min_dollar_volume": 1000000.0,
+      "min_float": null,
+      "max_float": null,
+      "sectors": [],
+      "exclude_sectors": [],
+      "min_market_cap": null,
+      "max_market_cap": null,
+      "min_price_change_percent": -100.0,
+      "max_price_change_percent": 100.0,
+      "min_volume_ratio": 1.0,
+      "premarket_only": true
+    },
+    "watchlists": {
+      "Most Active": [],
+      "High Volume": [],
+      "Premarket Movers": [],
+      "Custom": []
+    },
+    "filters": {
+      "active_filters": [],
+      "filter_combinations": {},
+      "saved_filter_sets": {}
+    }
+  },
+  "current_scan_results": {
+    "timestamp": null,
+    "scan_id": null,
+    "total_results": 0,
+    "results_by_score": [],
+    "results_by_symbol": {},
+    "top_gainers": [],
+    "top_losers": [],
+    "highest_volume": [],
+    "premarket_leaders": [],
+    "sector_breakdown": {},
+    "market_cap_distribution": {}
+  },
+  "filtered_results": {
+    "price_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    },
+    "volume_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    },
+    "sector_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    },
+    "float_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    },
+    "market_cap_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    },
+    "momentum_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    },
+    "composite_filtered": {
+      "criteria": {},
+      "results": [],
+      "count": 0
+    }
+  },
+  "historical_data": {
+    "daily_scans": {},
+    "weekly_summaries": {},
+    "monthly_trends": {},
+    "performance_tracking": {
+      "scan_times": [],
+      "success_rates": [],
+      "data_quality_scores": [],
+      "provider_performance": {}
+    },
+    "trending_analysis": {
+      "top_performers_trend": {},
+      "sector_momentum_trend": {},
+      "volume_leaders_trend": {},
+      "volatility_trend": {}
+    }
+  },
+  "concurrent_processing": {
+    "qthread_pool_status": {
+      "max_threads": 20,
+      "active_threads": 0,
+      "queued_tasks": 0,
+      "completed_tasks": 0,
+      "failed_tasks": 0
+    },
+    "batch_processing": {
+      "batch_size": 50,
+      "current_batch": 0,
+      "total_batches": 0,
+      "batch_progress": 0.0
+    },
+    "real_time_updates": {
+      "enabled": false,
+      "update_interval_seconds": 30,
+      "last_update_timestamp": null,
+      "symbols_being_monitored": [],
+      "update_queue": []
+    }
+  },
+  "data_integration": {
+    "providers": {
+      "yahoo_finance": {
+        "status": "unknown",
+        "last_success": null,
+        "request_count": 0,
+        "success_rate": 100.0,
+        "average_response_time_ms": 0.0
+      },
+      "alpha_vantage": {
+        "status": "unknown",
+        "last_success": null,
+        "request_count": 0,
+        "success_rate": 100.0,
+        "average_response_time_ms": 0.0
+      },
+      "iex_cloud": {
+        "status": "unknown",
+        "last_success": null,
+        "request_count": 0,
+        "success_rate": 100.0,
+        "average_response_time_ms": 0.0
+      }
+    },
+    "failover_history": [],
+    "data_quality_metrics": {
+      "completeness_score": 100.0,
+      "accuracy_score": 100.0,
+      "timeliness_score": 100.0,
+      "consistency_score": 100.0
+    }
+  },
+  "security_metrics_cache": {
+    "example_structure": {
+      "AAPL": {
+        "symbol": "AAPL",
+        "current_price": 0.0,
+        "price_change": 0.0,
+        "price_change_percent": 0.0,
+        "volume": 0,
+        "dollar_volume": 0.0,
+        "vwap": 0.0,
+        "atr": 0.0,
+        "float_size": null,
+        "market_cap": null,
+        "sector": null,
+        "premarket_high": null,
+        "premarket_low": null,
+        "premarket_volume": null,
+        "volume_ratio": 1.0,
+        "volatility_score": 0.0,
+        "momentum_score": 0.0,
+        "composite_score": 0.0,
+        "position_size_suggestion": null,
+        "last_updated": null
+      }
+    }
+  },
+  "risk_integration": {
+    "position_sizing_cache": {},
+    "risk_adjusted_rankings": [],
+    "atr_adjustments": {},
+    "portfolio_impact_analysis": {}
+  },
+  "alert_integration": {
+    "triggered_alerts": [],
+    "alert_candidates": [],
+    "threshold_breaches": [],
+    "notification_queue": []
+  },
+  "export_data": {
+    "excel_export_ready": false,
+    "csv_export_ready": false,
+    "last_export_timestamp": null,
+    "exportable_result_count": 0
+  },
+  "performance_optimization": {
+    "cache_hit_rate": 0.0,
+    "database_query_times": [],
+    "api_response_times": [],
+    "memory_usage_mb": 0.0,
+    "cpu_utilization_percent": 0.0,
+    "optimization_recommendations": []
+  },
+  "error_tracking": {
+    "scan_errors": [],
+    "api_errors": [],
+    "data_validation_errors": [],
+    "processing_errors": [],
+    "recovery_actions": []
+  },
+  "cache_management": {
+    "size_bytes": 0,
+    "cleanup_threshold_mb": 100,
+    "auto_cleanup_enabled": true,
+    "last_cleanup_timestamp": null,
+    "retention_days": 30,
+    "compression_enabled": false
+  }
+}
