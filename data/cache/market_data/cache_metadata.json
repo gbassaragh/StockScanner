@@ -1,0 +1,407 @@
+{
+  "cache_metadata_version": "1.0.0",
+  "last_updated": "2024-01-15T10:30:00Z",
+  "description": "Cache metadata management file controlling TTL policies, retention strategies, expiration tracking, and automatic cleanup procedures for all market data cache files",
+  
+  "ttl_management": {
+    "description": "TTL management metadata supporting 24-hour rolling cache deletion and 30-day retention policies per Section 3.5.2",
+    "policies": {
+      "quote_data": {
+        "ttl_seconds": 300,
+        "description": "Real-time quote data TTL: 5 minutes for market hours",
+        "cache_key_pattern": "*_quote_*",
+        "priority": "high",
+        "refresh_trigger": "market_hours_only"
+      },
+      "historical_data": {
+        "ttl_seconds": 3600,
+        "description": "Historical OHLCV data TTL: 1 hour for daily aggregations",
+        "cache_key_pattern": "*_historical_*",
+        "priority": "medium",
+        "refresh_trigger": "end_of_trading_day"
+      },
+      "intraday_data": {
+        "ttl_seconds": 1800,
+        "description": "Intraday minute-level data TTL: 30 minutes",
+        "cache_key_pattern": "*_intraday_*",
+        "priority": "medium",
+        "refresh_trigger": "continuous"
+      },
+      "company_fundamentals": {
+        "ttl_seconds": 604800,
+        "description": "Company fundamental data TTL: 7 days for quarterly updates",
+        "cache_key_pattern": "*_fundamentals_*",
+        "priority": "low",
+        "refresh_trigger": "earnings_releases"
+      },
+      "security_metadata": {
+        "ttl_seconds": 2592000,
+        "description": "Security metadata TTL: 30 days for sector/float/market cap data",
+        "cache_key_pattern": "*_metadata_*",
+        "priority": "low",
+        "refresh_trigger": "weekly_refresh"
+      },
+      "market_news": {
+        "ttl_seconds": 3600,
+        "description": "Market news and events TTL: 1 hour for breaking news",
+        "cache_key_pattern": "*_news_*",
+        "priority": "high",
+        "refresh_trigger": "breaking_news_events"
+      }
+    },
+    "global_settings": {
+      "max_cache_age_days": 30,
+      "rolling_deletion_window_hours": 24,
+      "emergency_cleanup_threshold_mb": 1024,
+      "automatic_cleanup_enabled": true,
+      "cleanup_schedule_minutes": 5
+    }
+  },
+
+  "retention_strategies": {
+    "description": "Configurable retention policies with 30-day disk space management per Section 6.3.8.2 Integration Monitoring",
+    "disk_management": {
+      "max_cache_size_mb": 2048,
+      "target_utilization_percent": 80,
+      "cleanup_threshold_percent": 90,
+      "aggressive_cleanup_threshold_percent": 95,
+      "minimum_free_space_mb": 512
+    },
+    "data_lifecycle": {
+      "hot_data_days": 1,
+      "warm_data_days": 7,
+      "cold_data_days": 30,
+      "archive_enabled": false,
+      "compression_enabled": true,
+      "compression_age_days": 3
+    },
+    "provider_specific": {
+      "yahoo_finance": {
+        "retention_days": 30,
+        "max_size_mb": 800,
+        "priority_level": 1
+      },
+      "iex_cloud": {
+        "retention_days": 30,
+        "max_size_mb": 600,
+        "priority_level": 2
+      },
+      "alpha_vantage": {
+        "retention_days": 30,
+        "max_size_mb": 400,
+        "priority_level": 3
+      },
+      "premium_providers": {
+        "retention_days": 30,
+        "max_size_mb": 200,
+        "priority_level": 4
+      }
+    }
+  },
+
+  "cache_warming": {
+    "description": "Cache warming strategies metadata for anticipated user interactions and frequently accessed symbols per Enhanced Caching Strategy",
+    "strategies": {
+      "premarket_symbols": {
+        "enabled": true,
+        "warm_before_market_open_minutes": 30,
+        "symbol_count": 100,
+        "data_types": ["quote", "intraday"],
+        "refresh_interval_minutes": 15,
+        "priority": "critical"
+      },
+      "user_watchlist": {
+        "enabled": true,
+        "warm_on_application_start": true,
+        "refresh_interval_minutes": 5,
+        "data_types": ["quote", "historical"],
+        "priority": "high"
+      },
+      "sector_leaders": {
+        "enabled": true,
+        "sectors": ["Technology", "Healthcare", "Financial", "Energy"],
+        "symbols_per_sector": 10,
+        "refresh_interval_minutes": 30,
+        "data_types": ["quote", "metadata"],
+        "priority": "medium"
+      },
+      "high_volume_securities": {
+        "enabled": true,
+        "volume_threshold": 1000000,
+        "symbol_count": 50,
+        "refresh_interval_minutes": 10,
+        "data_types": ["quote", "intraday"],
+        "priority": "high"
+      }
+    },
+    "scheduling": {
+      "premarket_start_time": "04:00:00",
+      "market_open_time": "09:30:00",
+      "market_close_time": "16:00:00",
+      "after_hours_end_time": "20:00:00",
+      "timezone": "America/New_York",
+      "weekend_warmup_enabled": false
+    }
+  },
+
+  "expiration_tracking": {
+    "description": "Expiration tracking and automatic cleanup coordination across all cache files per Integration Monitoring requirements",
+    "monitoring": {
+      "check_interval_seconds": 300,
+      "batch_cleanup_size": 100,
+      "parallel_cleanup_threads": 2,
+      "cleanup_transaction_timeout_seconds": 30,
+      "verification_enabled": true
+    },
+    "expiration_algorithms": {
+      "lru_eviction": {
+        "enabled": true,
+        "max_entries": 10000,
+        "eviction_batch_size": 100
+      },
+      "time_based_eviction": {
+        "enabled": true,
+        "check_frequency_minutes": 5,
+        "grace_period_minutes": 1
+      },
+      "size_based_eviction": {
+        "enabled": true,
+        "size_check_frequency_minutes": 15,
+        "cleanup_when_full_percent": 90
+      }
+    },
+    "cleanup_coordination": {
+      "database_cleanup_sync": true,
+      "filesystem_cleanup_sync": true,
+      "memory_cache_cleanup_sync": true,
+      "cross_thread_coordination": true,
+      "cleanup_status_logging": true
+    }
+  },
+
+  "health_monitoring": {
+    "description": "Cache health monitoring and maintenance scheduling for optimal system performance per Section 6.3.8.2",
+    "performance_metrics": {
+      "cache_hit_rate_threshold": 85.0,
+      "average_response_time_ms_threshold": 50,
+      "memory_usage_threshold_mb": 512,
+      "disk_usage_threshold_percent": 80,
+      "error_rate_threshold_percent": 5.0
+    },
+    "health_checks": {
+      "cache_integrity": {
+        "enabled": true,
+        "check_interval_minutes": 30,
+        "checksum_validation": true,
+        "corruption_detection": true
+      },
+      "performance_monitoring": {
+        "enabled": true,
+        "metrics_collection_interval_seconds": 60,
+        "response_time_tracking": true,
+        "throughput_monitoring": true,
+        "resource_usage_tracking": true
+      },
+      "storage_health": {
+        "enabled": true,
+        "disk_space_monitoring": true,
+        "file_system_health_check": true,
+        "backup_verification": true,
+        "check_interval_minutes": 15
+      }
+    },
+    "alerting": {
+      "critical_alerts": {
+        "cache_corruption": true,
+        "disk_space_critical": true,
+        "performance_degradation": true,
+        "cleanup_failures": true
+      },
+      "warning_alerts": {
+        "high_cache_miss_rate": true,
+        "slow_response_times": true,
+        "approaching_storage_limits": true,
+        "outdated_data_detected": true
+      },
+      "notification_methods": ["log", "windows_notification"],
+      "alert_cooldown_minutes": 15
+    }
+  },
+
+  "maintenance_scheduling": {
+    "description": "Automated maintenance procedures and scheduling for cache optimization",
+    "scheduled_tasks": {
+      "daily_cleanup": {
+        "enabled": true,
+        "execution_time": "02:00:00",
+        "tasks": [
+          "expire_old_entries",
+          "compress_historical_data",
+          "defragment_cache_files",
+          "update_statistics"
+        ],
+        "max_execution_time_minutes": 30
+      },
+      "weekly_maintenance": {
+        "enabled": true,
+        "execution_day": "sunday",
+        "execution_time": "01:00:00",
+        "tasks": [
+          "full_cache_analysis",
+          "optimize_indexes",
+          "backup_metadata",
+          "validate_integrity"
+        ],
+        "max_execution_time_minutes": 60
+      },
+      "monthly_optimization": {
+        "enabled": true,
+        "execution_day": 1,
+        "execution_time": "00:30:00",
+        "tasks": [
+          "cache_strategy_analysis",
+          "storage_reorganization",
+          "performance_report_generation",
+          "configuration_optimization"
+        ],
+        "max_execution_time_minutes": 120
+      }
+    },
+    "emergency_procedures": {
+      "cache_corruption_recovery": {
+        "auto_rebuild": true,
+        "backup_restoration": true,
+        "data_validation": true,
+        "user_notification": true
+      },
+      "storage_exhaustion": {
+        "aggressive_cleanup": true,
+        "temporary_disable_caching": true,
+        "priority_data_preservation": true,
+        "emergency_compression": true
+      },
+      "performance_degradation": {
+        "cache_rebuild": true,
+        "index_optimization": true,
+        "memory_cleanup": true,
+        "configuration_reset": false
+      }
+    }
+  },
+
+  "integration_settings": {
+    "description": "Integration configuration with data integration engine and database manager",
+    "database_integration": {
+      "sqlite_cache_table": "MARKET_DATA_CACHE",
+      "metadata_table": "SECURITY_METADATA",
+      "connection_pool_size": 3,
+      "transaction_timeout_seconds": 30,
+      "batch_operation_size": 100,
+      "wal_mode_enabled": true
+    },
+    "data_integration_sync": {
+      "cache_manager_class": "DatabaseManager",
+      "cleanup_signal_coordination": true,
+      "background_sync_enabled": true,
+      "real_time_updates": true,
+      "provider_failover_cache_usage": true
+    },
+    "qthread_coordination": {
+      "background_cleanup_thread": true,
+      "concurrent_read_support": true,
+      "thread_safe_operations": true,
+      "signal_slot_integration": true,
+      "cleanup_timer_interval_ms": 300000
+    }
+  },
+
+  "configuration_overrides": {
+    "description": "User-configurable settings and runtime overrides",
+    "user_preferences": {
+      "aggressive_caching": false,
+      "preload_watchlist": true,
+      "background_refresh": true,
+      "notification_level": "warnings_and_errors",
+      "cleanup_during_trading_hours": false
+    },
+    "development_settings": {
+      "debug_cache_operations": false,
+      "verbose_logging": false,
+      "disable_cleanup": false,
+      "extended_retention": false,
+      "performance_profiling": false
+    },
+    "performance_tuning": {
+      "cache_size_multiplier": 1.0,
+      "cleanup_frequency_multiplier": 1.0,
+      "batch_size_multiplier": 1.0,
+      "ttl_extension_multiplier": 1.0,
+      "parallel_operations_enabled": true
+    }
+  },
+
+  "statistics_tracking": {
+    "description": "Cache performance and usage statistics for optimization",
+    "runtime_metrics": {
+      "total_cache_entries": 0,
+      "cache_hit_rate": 0.0,
+      "cache_miss_rate": 0.0,
+      "average_response_time_ms": 0.0,
+      "total_cleanup_operations": 0,
+      "last_cleanup_timestamp": null,
+      "current_cache_size_mb": 0.0,
+      "expired_entries_cleaned": 0
+    },
+    "provider_statistics": {
+      "yahoo_finance": {
+        "cached_symbols": 0,
+        "hit_rate": 0.0,
+        "avg_response_time_ms": 0.0,
+        "last_update": null
+      },
+      "iex_cloud": {
+        "cached_symbols": 0,
+        "hit_rate": 0.0,
+        "avg_response_time_ms": 0.0,
+        "last_update": null
+      },
+      "alpha_vantage": {
+        "cached_symbols": 0,
+        "hit_rate": 0.0,
+        "avg_response_time_ms": 0.0,
+        "last_update": null
+      }
+    },
+    "optimization_insights": {
+      "most_accessed_symbols": [],
+      "least_accessed_symbols": [],
+      "peak_usage_hours": [],
+      "recommended_warmup_symbols": [],
+      "storage_optimization_suggestions": []
+    }
+  },
+
+  "audit_trail": {
+    "description": "Audit logging for cache operations and compliance tracking",
+    "operation_logging": {
+      "cache_operations": true,
+      "cleanup_operations": true,
+      "configuration_changes": true,
+      "performance_events": true,
+      "error_events": true
+    },
+    "retention_policy": {
+      "audit_log_retention_days": 90,
+      "critical_events_retention_days": 180,
+      "performance_logs_retention_days": 30,
+      "cleanup_logs_compression": true
+    },
+    "compliance_requirements": {
+      "data_integrity_validation": true,
+      "access_pattern_logging": false,
+      "cache_modification_tracking": true,
+      "retention_policy_enforcement": true,
+      "audit_trail_encryption": false
+    }
+  }
+}
