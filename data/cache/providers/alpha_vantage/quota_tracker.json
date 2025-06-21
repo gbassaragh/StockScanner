@@ -1,0 +1,282 @@
+{
+  "_schema_version": "1.0.0",
+  "_metadata": {
+    "tracker_purpose": "Alpha Vantage provider quota management and API key rotation state tracking",
+    "managed_by": "data_integration.py MultiSourceDataIntegration class",
+    "compliance_note": "Implements 25 requests/day limit compliance per Section 3.4.1 Third-Party Services specifications",
+    "last_modified": "2024-01-15T10:30:00Z",
+    "modification_source": "quota_tracker_initialization",
+    "validation_checksum": "sha256:quota_tracker_v1_init",
+    "file_location": "data/cache/providers/alpha_vantage/quota_tracker.json",
+    "retention_policy": "persistent_operational_data"
+  },
+  "_tracking_configuration": {
+    "quota_enforcement": {
+      "daily_request_limit": 25,
+      "quota_reset_time": "00:00:00 UTC",
+      "strict_compliance_mode": true,
+      "quota_buffer_requests": 2,
+      "emergency_reserve_requests": 3,
+      "quota_exhaustion_threshold": 22
+    },
+    "circuit_breaker_integration": {
+      "auto_circuit_break_on_quota_exhaustion": true,
+      "circuit_break_threshold_percentage": 95.0,
+      "circuit_recovery_delay_minutes": 60,
+      "circuit_health_check_interval": 300,
+      "force_circuit_open_on_api_error": true
+    },
+    "rotation_strategy": {
+      "auto_rotation_enabled": true,
+      "rotation_trigger_threshold": 23,
+      "rotation_cooldown_minutes": 30,
+      "max_keys_per_rotation_cycle": 5,
+      "rotation_backoff_strategy": "exponential",
+      "rotation_success_validation": true
+    }
+  },
+  "provider_info": {
+    "provider_name": "alpha_vantage",
+    "provider_id": "alpha_vantage_secondary",
+    "tier_classification": "tier_1_secondary",
+    "quota_type": "daily_request_limit",
+    "base_weight": 20,
+    "current_weight": 20,
+    "weight_adjustment_factor": 1.0,
+    "provider_status": "ACTIVE",
+    "last_health_check": "2024-01-15T10:25:00Z",
+    "circuit_breaker_state": "CLOSED"
+  },
+  "api_key_rotation": {
+    "current_key_index": 0,
+    "total_configured_keys": 1,
+    "rotation_enabled": true,
+    "last_rotation_timestamp": null,
+    "next_rotation_due": null,
+    "rotation_history": [],
+    "key_performance_metrics": {
+      "key_0": {
+        "key_identifier": "key_0_alpha_vantage",
+        "status": "ACTIVE",
+        "first_used": "2024-01-15T10:30:00Z",
+        "last_used": null,
+        "total_requests_lifetime": 0,
+        "success_rate_percentage": 100.0,
+        "average_response_time_ms": 0.0,
+        "quota_exhaustion_count": 0,
+        "last_quota_reset": "2024-01-15T00:00:00Z",
+        "circuit_breaker_triggers": 0,
+        "error_count_24h": 0
+      }
+    },
+    "rotation_decision_log": []
+  },
+  "daily_quota_tracking": {
+    "current_date": "2024-01-15",
+    "quota_period_start": "2024-01-15T00:00:00Z",
+    "quota_period_end": "2024-01-16T00:00:00Z",
+    "total_requests_today": 0,
+    "remaining_requests_today": 25,
+    "quota_utilization_percentage": 0.0,
+    "projected_daily_usage": 0,
+    "quota_exhaustion_risk": "LOW",
+    "last_request_timestamp": null,
+    "request_distribution": {
+      "00-06": 0,
+      "06-12": 0,
+      "12-18": 0,
+      "18-24": 0
+    },
+    "peak_usage_hour": null,
+    "quota_efficiency_score": 100.0
+  },
+  "request_history": {
+    "last_50_requests": [],
+    "request_patterns": {
+      "average_requests_per_hour": 0.0,
+      "peak_request_hour": null,
+      "request_frequency_pattern": "UNKNOWN",
+      "typical_batch_size": 1,
+      "concurrent_request_rate": 0.0
+    },
+    "success_metrics": {
+      "successful_requests_24h": 0,
+      "failed_requests_24h": 0,
+      "timeout_requests_24h": 0,
+      "rate_limit_violations_24h": 0,
+      "authentication_failures_24h": 0
+    },
+    "response_time_analytics": {
+      "average_response_time_ms": 0.0,
+      "fastest_response_time_ms": 0.0,
+      "slowest_response_time_ms": 0.0,
+      "response_time_p95_ms": 0.0,
+      "response_time_trend": "STABLE"
+    }
+  },
+  "quota_optimization": {
+    "intelligent_scheduling": {
+      "optimal_request_times": [],
+      "high_traffic_periods": [],
+      "recommended_batch_sizes": [1],
+      "request_spacing_recommendations": {
+        "minimum_interval_seconds": 12,
+        "optimal_interval_seconds": 15,
+        "burst_prevention_interval": 20
+      }
+    },
+    "usage_forecasting": {
+      "predicted_daily_consumption": 0,
+      "quota_risk_assessment": "LOW",
+      "recommended_throttling": false,
+      "peak_usage_prediction": "00:00",
+      "quota_preservation_mode": false
+    },
+    "efficiency_recommendations": {
+      "current_efficiency_score": 100.0,
+      "waste_prevention_alerts": [],
+      "optimization_opportunities": [],
+      "resource_conservation_suggestions": []
+    }
+  },
+  "integration_state": {
+    "data_integration_sync": {
+      "last_sync_with_data_integration": "2024-01-15T10:30:00Z",
+      "sync_status": "SYNCHRONIZED",
+      "pending_updates": [],
+      "sync_conflicts": [],
+      "next_scheduled_sync": "2024-01-15T11:00:00Z"
+    },
+    "circuit_breaker_coordination": {
+      "circuit_breaker_override": false,
+      "manual_circuit_control": false,
+      "circuit_state_history": [],
+      "last_circuit_event": null,
+      "circuit_recovery_scheduled": null
+    },
+    "provider_failover_integration": {
+      "failover_weight_adjustment": 1.0,
+      "provider_priority_adjustment": 0,
+      "temporary_provider_disable": false,
+      "failover_trigger_conditions": {
+        "quota_exhaustion": true,
+        "consecutive_failures": 3,
+        "response_time_threshold_ms": 5000,
+        "circuit_breaker_open": true
+      }
+    }
+  },
+  "monitoring_and_alerts": {
+    "alert_configuration": {
+      "quota_exhaustion_alerts": true,
+      "rotation_failure_alerts": true,
+      "performance_degradation_alerts": true,
+      "circuit_breaker_alerts": true,
+      "threshold_approach_alerts": true
+    },
+    "alert_thresholds": {
+      "quota_warning_percentage": 80.0,
+      "quota_critical_percentage": 95.0,
+      "response_time_warning_ms": 3000,
+      "response_time_critical_ms": 5000,
+      "error_rate_warning_percentage": 5.0,
+      "error_rate_critical_percentage": 10.0
+    },
+    "recent_alerts": [],
+    "alert_suppression": {
+      "duplicate_alert_suppression_minutes": 15,
+      "alert_storm_protection": true,
+      "max_alerts_per_hour": 10
+    },
+    "notification_delivery": {
+      "windows_notifications": true,
+      "log_file_alerts": true,
+      "alert_correlation_tracking": true,
+      "alert_acknowledgment_required": false
+    }
+  },
+  "performance_analytics": {
+    "provider_efficiency": {
+      "quota_utilization_efficiency": 100.0,
+      "request_success_rate": 100.0,
+      "average_data_quality_score": 100.0,
+      "provider_reliability_score": 100.0,
+      "cost_efficiency_rating": "OPTIMAL"
+    },
+    "historical_performance": {
+      "last_7_days_summary": {
+        "total_requests": 0,
+        "average_daily_usage": 0.0,
+        "peak_daily_usage": 0,
+        "quota_exhaustion_events": 0,
+        "rotation_events": 0,
+        "circuit_breaker_activations": 0
+      },
+      "last_30_days_summary": {
+        "total_requests": 0,
+        "average_daily_usage": 0.0,
+        "peak_daily_usage": 0,
+        "quota_exhaustion_events": 0,
+        "rotation_events": 0,
+        "provider_uptime_percentage": 100.0
+      }
+    },
+    "trend_analysis": {
+      "usage_trend": "STABLE",
+      "performance_trend": "STABLE",
+      "reliability_trend": "STABLE",
+      "efficiency_trend": "STABLE",
+      "capacity_planning_insights": []
+    }
+  },
+  "maintenance_and_cleanup": {
+    "data_retention": {
+      "request_history_retention_days": 30,
+      "performance_metrics_retention_days": 90,
+      "alert_history_retention_days": 180,
+      "rotation_history_retention_days": 365
+    },
+    "automated_cleanup": {
+      "cleanup_enabled": true,
+      "cleanup_interval_hours": 24,
+      "last_cleanup_timestamp": "2024-01-15T00:00:00Z",
+      "next_cleanup_scheduled": "2024-01-16T00:00:00Z",
+      "cleanup_operations": [
+        "expired_request_history",
+        "old_performance_metrics",
+        "resolved_alerts",
+        "completed_rotations"
+      ]
+    },
+    "file_management": {
+      "automatic_backup_enabled": true,
+      "backup_retention_days": 7,
+      "compression_enabled": true,
+      "integrity_verification": true,
+      "corruption_recovery_enabled": true
+    }
+  },
+  "compliance_and_security": {
+    "quota_compliance": {
+      "strict_limit_enforcement": true,
+      "compliance_violation_count": 0,
+      "last_compliance_audit": "2024-01-15T10:30:00Z",
+      "compliance_score": 100.0,
+      "regulatory_requirements_met": true
+    },
+    "security_measures": {
+      "quota_data_encryption": false,
+      "access_logging": true,
+      "tampering_detection": true,
+      "data_integrity_verification": true,
+      "secure_deletion_on_rotation": true
+    },
+    "audit_trail": {
+      "all_operations_logged": true,
+      "correlation_id_tracking": true,
+      "change_detection": true,
+      "forensic_analysis_support": true,
+      "compliance_reporting_ready": true
+    }
+  }
+}
