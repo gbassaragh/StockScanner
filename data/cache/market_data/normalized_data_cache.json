@@ -1,0 +1,735 @@
+{
+  "cache_metadata": {
+    "version": "1.0.0",
+    "created_timestamp": "2024-01-15T09:30:00.000Z",
+    "last_updated": "2024-01-15T09:45:30.125Z",
+    "expiry_timestamp": "2024-01-15T10:00:30.125Z",
+    "total_symbols": 125,
+    "data_sources": [
+      "yahoo_finance",
+      "iex_cloud", 
+      "alpha_vantage"
+    ],
+    "normalization_version": "2.1.0",
+    "cache_size_mb": 2.7,
+    "quality_threshold": 85.0,
+    "scan_session_id": "scan_20240115_093000_abc123"
+  },
+  "provider_metadata": {
+    "yahoo_finance": {
+      "symbols_contributed": 85,
+      "success_rate": 94.2,
+      "average_response_time_ms": 450,
+      "last_request_timestamp": "2024-01-15T09:44:15.250Z",
+      "circuit_breaker_state": "CLOSED",
+      "quality_score": 92.5,
+      "weight": 40
+    },
+    "iex_cloud": {
+      "symbols_contributed": 25,
+      "success_rate": 98.8,
+      "average_response_time_ms": 120,
+      "last_request_timestamp": "2024-01-15T09:43:45.100Z",
+      "circuit_breaker_state": "CLOSED",
+      "quality_score": 97.2,
+      "weight": 30
+    },
+    "alpha_vantage": {
+      "symbols_contributed": 15,
+      "success_rate": 87.5,
+      "average_response_time_ms": 2100,
+      "last_request_timestamp": "2024-01-15T09:42:30.875Z",
+      "circuit_breaker_state": "HALF_OPEN",
+      "quality_score": 89.1,
+      "weight": 20
+    }
+  },
+  "data_validation_summary": {
+    "total_data_points": 1875,
+    "valid_data_points": 1823,
+    "corrected_data_points": 47,
+    "rejected_data_points": 5,
+    "quality_score_average": 91.7,
+    "price_anomalies_detected": 8,
+    "volume_anomalies_detected": 12,
+    "timestamp_corrections": 3,
+    "statistical_corrections_applied": 15
+  },
+  "normalized_market_data": {
+    "AAPL": {
+      "symbol": "AAPL",
+      "provider": "yahoo_finance",
+      "timestamp": "2024-01-15T09:45:00.000Z",
+      "price_data": {
+        "current_price": "185.42",
+        "open_price": "184.75",
+        "high_price": "186.12",
+        "low_price": "184.20",
+        "previous_close": "183.89",
+        "price_change": "1.53",
+        "price_change_percent": "0.83",
+        "bid_price": "185.40",
+        "ask_price": "185.44",
+        "bid_size": 1200,
+        "ask_size": 800
+      },
+      "volume_data": {
+        "current_volume": 12450000,
+        "average_volume_20d": 58750000,
+        "dollar_volume": "2309829000.00",
+        "volume_ratio": 0.21,
+        "premarket_volume": 850000
+      },
+      "technical_indicators": {
+        "vwap": "185.12",
+        "vwap_deviation": "0.16",
+        "atr_14": "3.45",
+        "rsi_14": 58.7,
+        "sma_20": "181.25",
+        "ema_12": "183.75"
+      },
+      "premarket_levels": {
+        "premarket_high": "185.95",
+        "premarket_low": "184.50",
+        "premarket_change": "0.86",
+        "premarket_change_percent": "0.47"
+      },
+      "fundamental_data": {
+        "market_cap": "2847500000000.00",
+        "float_shares": "15555000000.00",
+        "shares_outstanding": "15628000000.00",
+        "sector": "Technology",
+        "industry": "Consumer Electronics"
+      },
+      "scanner_metrics": {
+        "volatility_score": 45.2,
+        "momentum_score": 62.8,
+        "volume_score": 35.1,
+        "composite_score": 68.4,
+        "rank": 15,
+        "tradable": true,
+        "alert_triggers": ["volume_spike", "price_breakout"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 95.8,
+        "source_reliability": "high",
+        "validation_status": "passed",
+        "anomalies_detected": [],
+        "corrections_applied": [],
+        "staleness_seconds": 30
+      }
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "provider": "iex_cloud",
+      "timestamp": "2024-01-15T09:45:00.000Z",
+      "price_data": {
+        "current_price": "238.75",
+        "open_price": "235.20",
+        "high_price": "242.80",
+        "low_price": "234.95",
+        "previous_close": "236.45",
+        "price_change": "2.30",
+        "price_change_percent": "0.97",
+        "bid_price": "238.70",
+        "ask_price": "238.80",
+        "bid_size": 800,
+        "ask_size": 1500
+      },
+      "volume_data": {
+        "current_volume": 8750000,
+        "average_volume_20d": 42300000,
+        "dollar_volume": "2089062500.00",
+        "volume_ratio": 0.21,
+        "premarket_volume": 1200000
+      },
+      "technical_indicators": {
+        "vwap": "239.15",
+        "vwap_deviation": "-0.17",
+        "atr_14": "8.92",
+        "rsi_14": 48.3,
+        "sma_20": "245.80",
+        "ema_12": "241.65"
+      },
+      "premarket_levels": {
+        "premarket_high": "240.50",
+        "premarket_low": "235.75",
+        "premarket_change": "-1.25",
+        "premarket_change_percent": "-0.53"
+      },
+      "fundamental_data": {
+        "market_cap": "752800000000.00",
+        "float_shares": "3154000000.00",
+        "shares_outstanding": "3178000000.00",
+        "sector": "Consumer Cyclical",
+        "industry": "Auto Manufacturers"
+      },
+      "scanner_metrics": {
+        "volatility_score": 78.5,
+        "momentum_score": 71.2,
+        "volume_score": 42.8,
+        "composite_score": 74.6,
+        "rank": 8,
+        "tradable": true,
+        "alert_triggers": ["high_volatility", "momentum_shift"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 98.2,
+        "source_reliability": "high",
+        "validation_status": "passed",
+        "anomalies_detected": [],
+        "corrections_applied": [],
+        "staleness_seconds": 15
+      }
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "provider": "yahoo_finance",
+      "timestamp": "2024-01-15T09:45:00.000Z",
+      "price_data": {
+        "current_price": "485.72",
+        "open_price": "478.50",
+        "high_price": "492.15",
+        "low_price": "477.80",
+        "previous_close": "476.89",
+        "price_change": "8.83",
+        "price_change_percent": "1.85",
+        "bid_price": "485.65",
+        "ask_price": "485.78",
+        "bid_size": 400,
+        "ask_size": 600
+      },
+      "volume_data": {
+        "current_volume": 15650000,
+        "average_volume_20d": 48200000,
+        "dollar_volume": "7601408000.00",
+        "volume_ratio": 0.32,
+        "premarket_volume": 2100000
+      },
+      "technical_indicators": {
+        "vwap": "484.25",
+        "vwap_deviation": "0.30",
+        "atr_14": "15.67",
+        "rsi_14": 65.2,
+        "sma_20": "468.90",
+        "ema_12": "479.35"
+      },
+      "premarket_levels": {
+        "premarket_high": "483.25",
+        "premarket_low": "476.50",
+        "premarket_change": "4.75",
+        "premarket_change_percent": "0.99"
+      },
+      "fundamental_data": {
+        "market_cap": "1194500000000.00",
+        "float_shares": "2458000000.00",
+        "shares_outstanding": "2470000000.00",
+        "sector": "Technology",
+        "industry": "Semiconductors"
+      },
+      "scanner_metrics": {
+        "volatility_score": 85.4,
+        "momentum_score": 89.7,
+        "volume_score": 58.3,
+        "composite_score": 92.1,
+        "rank": 3,
+        "tradable": true,
+        "alert_triggers": ["momentum_surge", "volume_breakout", "price_acceleration"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 94.6,
+        "source_reliability": "high",
+        "validation_status": "passed",
+        "anomalies_detected": ["minor_volume_spike"],
+        "corrections_applied": [],
+        "staleness_seconds": 25
+      }
+    },
+    "AMD": {
+      "symbol": "AMD",
+      "provider": "alpha_vantage",
+      "timestamp": "2024-01-15T09:44:30.000Z",
+      "price_data": {
+        "current_price": "148.95",
+        "open_price": "146.80",
+        "high_price": "150.25",
+        "low_price": "146.15",
+        "previous_close": "147.32",
+        "price_change": "1.63",
+        "price_change_percent": "1.11",
+        "bid_price": "148.90",
+        "ask_price": "149.00",
+        "bid_size": 1000,
+        "ask_size": 750
+      },
+      "volume_data": {
+        "current_volume": 22400000,
+        "average_volume_20d": 38750000,
+        "dollar_volume": "3336480000.00",
+        "volume_ratio": 0.58,
+        "premarket_volume": 1850000
+      },
+      "technical_indicators": {
+        "vwap": "148.45",
+        "vwap_deviation": "0.34",
+        "atr_14": "4.82",
+        "rsi_14": 61.8,
+        "sma_20": "144.75",
+        "ema_12": "146.90"
+      },
+      "premarket_levels": {
+        "premarket_high": "149.50",
+        "premarket_low": "146.20",
+        "premarket_change": "2.18",
+        "premarket_change_percent": "1.48"
+      },
+      "fundamental_data": {
+        "market_cap": "241200000000.00",
+        "float_shares": "1618000000.00",
+        "shares_outstanding": "1625000000.00",
+        "sector": "Technology",
+        "industry": "Semiconductors"
+      },
+      "scanner_metrics": {
+        "volatility_score": 62.7,
+        "momentum_score": 75.4,
+        "volume_score": 68.9,
+        "composite_score": 81.3,
+        "rank": 6,
+        "tradable": true,
+        "alert_triggers": ["volume_above_average", "momentum_continuation"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 89.3,
+        "source_reliability": "medium",
+        "validation_status": "passed_with_corrections",
+        "anomalies_detected": ["timestamp_lag"],
+        "corrections_applied": ["timestamp_normalization"],
+        "staleness_seconds": 60
+      }
+    },
+    "SPY": {
+      "symbol": "SPY",
+      "provider": "iex_cloud",
+      "timestamp": "2024-01-15T09:45:00.000Z",
+      "price_data": {
+        "current_price": "475.82",
+        "open_price": "474.95",
+        "high_price": "476.50",
+        "low_price": "474.20",
+        "previous_close": "474.35",
+        "price_change": "1.47",
+        "price_change_percent": "0.31",
+        "bid_price": "475.80",
+        "ask_price": "475.84",
+        "bid_size": 2500,
+        "ask_size": 3200
+      },
+      "volume_data": {
+        "current_volume": 45200000,
+        "average_volume_20d": 65800000,
+        "dollar_volume": "21509464000.00",
+        "volume_ratio": 0.69,
+        "premarket_volume": 3200000
+      },
+      "technical_indicators": {
+        "vwap": "475.65",
+        "vwap_deviation": "0.04",
+        "atr_14": "2.15",
+        "rsi_14": 52.4,
+        "sma_20": "473.80",
+        "ema_12": "474.90"
+      },
+      "premarket_levels": {
+        "premarket_high": "475.25",
+        "premarket_low": "474.10",
+        "premarket_change": "0.60",
+        "premarket_change_percent": "0.13"
+      },
+      "fundamental_data": {
+        "market_cap": "43650000000.00",
+        "float_shares": "917500000.00",
+        "shares_outstanding": "917500000.00",
+        "sector": "Financial Services",
+        "industry": "Exchange Traded Fund"
+      },
+      "scanner_metrics": {
+        "volatility_score": 25.8,
+        "momentum_score": 38.2,
+        "volume_score": 78.4,
+        "composite_score": 52.1,
+        "rank": 45,
+        "tradable": true,
+        "alert_triggers": ["high_volume"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 97.8,
+        "source_reliability": "high",
+        "validation_status": "passed",
+        "anomalies_detected": [],
+        "corrections_applied": [],
+        "staleness_seconds": 10
+      }
+    },
+    "QQQ": {
+      "symbol": "QQQ",
+      "provider": "yahoo_finance",
+      "timestamp": "2024-01-15T09:45:00.000Z",
+      "price_data": {
+        "current_price": "398.76",
+        "open_price": "397.25",
+        "high_price": "400.15",
+        "low_price": "396.80",
+        "previous_close": "396.92",
+        "price_change": "1.84",
+        "price_change_percent": "0.46",
+        "bid_price": "398.72",
+        "ask_price": "398.78",
+        "bid_size": 1800,
+        "ask_size": 2100
+      },
+      "volume_data": {
+        "current_volume": 28900000,
+        "average_volume_20d": 42150000,
+        "dollar_volume": "11521964000.00",
+        "volume_ratio": 0.69,
+        "premarket_volume": 2100000
+      },
+      "technical_indicators": {
+        "vwap": "398.45",
+        "vwap_deviation": "0.08",
+        "atr_14": "3.28",
+        "rsi_14": 56.1,
+        "sma_20": "394.50",
+        "ema_12": "397.15"
+      },
+      "premarket_levels": {
+        "premarket_high": "398.50",
+        "premarket_low": "396.75",
+        "premarket_change": "0.83",
+        "premarket_change_percent": "0.21"
+      },
+      "fundamental_data": {
+        "market_cap": "20875000000.00",
+        "float_shares": "523800000.00",
+        "shares_outstanding": "523800000.00",
+        "sector": "Financial Services",
+        "industry": "Exchange Traded Fund"
+      },
+      "scanner_metrics": {
+        "volatility_score": 42.1,
+        "momentum_score": 51.7,
+        "volume_score": 72.5,
+        "composite_score": 59.8,
+        "rank": 32,
+        "tradable": true,
+        "alert_triggers": ["momentum_pickup", "volume_increase"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 96.4,
+        "source_reliability": "high",
+        "validation_status": "passed",
+        "anomalies_detected": [],
+        "corrections_applied": [],
+        "staleness_seconds": 20
+      }
+    },
+    "PLTR": {
+      "symbol": "PLTR",
+      "provider": "yahoo_finance",
+      "timestamp": "2024-01-15T09:45:00.000Z",
+      "price_data": {
+        "current_price": "17.85",
+        "open_price": "17.20",
+        "high_price": "18.45",
+        "low_price": "17.05",
+        "previous_close": "16.98",
+        "price_change": "0.87",
+        "price_change_percent": "5.12",
+        "bid_price": "17.82",
+        "ask_price": "17.88",
+        "bid_size": 5000,
+        "ask_size": 4200
+      },
+      "volume_data": {
+        "current_volume": 65800000,
+        "average_volume_20d": 35200000,
+        "dollar_volume": "1174730000.00",
+        "volume_ratio": 1.87,
+        "premarket_volume": 8500000
+      },
+      "technical_indicators": {
+        "vwap": "17.65",
+        "vwap_deviation": "1.13",
+        "atr_14": "1.24",
+        "rsi_14": 72.8,
+        "sma_20": "16.25",
+        "ema_12": "16.85"
+      },
+      "premarket_levels": {
+        "premarket_high": "17.95",
+        "premarket_low": "16.80",
+        "premarket_change": "0.22",
+        "premarket_change_percent": "1.30"
+      },
+      "fundamental_data": {
+        "market_cap": "37800000000.00",
+        "float_shares": "1825000000.00",
+        "shares_outstanding": "2118000000.00",
+        "sector": "Technology",
+        "industry": "Software - Infrastructure"
+      },
+      "scanner_metrics": {
+        "volatility_score": 89.5,
+        "momentum_score": 95.8,
+        "volume_score": 92.3,
+        "composite_score": 96.7,
+        "rank": 1,
+        "tradable": true,
+        "alert_triggers": ["momentum_surge", "volume_breakout", "price_acceleration", "gap_up"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 93.7,
+        "source_reliability": "high",
+        "validation_status": "passed",
+        "anomalies_detected": ["unusual_volume"],
+        "corrections_applied": [],
+        "staleness_seconds": 15
+      }
+    },
+    "SOFI": {
+      "symbol": "SOFI",
+      "provider": "alpha_vantage",
+      "timestamp": "2024-01-15T09:44:00.000Z",
+      "price_data": {
+        "current_price": "8.42",
+        "open_price": "7.95",
+        "high_price": "8.68",
+        "low_price": "7.90",
+        "previous_close": "7.89",
+        "price_change": "0.53",
+        "price_change_percent": "6.72",
+        "bid_price": "8.40",
+        "ask_price": "8.44",
+        "bid_size": 8500,
+        "ask_size": 7200
+      },
+      "volume_data": {
+        "current_volume": 48200000,
+        "average_volume_20d": 22500000,
+        "dollar_volume": "405844000.00",
+        "volume_ratio": 2.14,
+        "premarket_volume": 6200000
+      },
+      "technical_indicators": {
+        "vwap": "8.25",
+        "vwap_deviation": "2.06",
+        "atr_14": "0.52",
+        "rsi_14": 78.4,
+        "sma_20": "7.65",
+        "ema_12": "7.85"
+      },
+      "premarket_levels": {
+        "premarket_high": "8.25",
+        "premarket_low": "7.85",
+        "premarket_change": "0.06",
+        "premarket_change_percent": "0.76"
+      },
+      "fundamental_data": {
+        "market_cap": "8250000000.00",
+        "float_shares": "912000000.00",
+        "shares_outstanding": "980000000.00",
+        "sector": "Financial Services",
+        "industry": "Credit Services"
+      },
+      "scanner_metrics": {
+        "volatility_score": 92.8,
+        "momentum_score": 98.2,
+        "volume_score": 95.7,
+        "composite_score": 98.4,
+        "rank": 2,
+        "tradable": true,
+        "alert_triggers": ["momentum_surge", "volume_explosion", "gap_up", "price_acceleration"]
+      },
+      "quality_metadata": {
+        "data_quality_score": 87.9,
+        "source_reliability": "medium",
+        "validation_status": "passed_with_corrections",
+        "anomalies_detected": ["timestamp_lag", "volume_spike"],
+        "corrections_applied": ["timestamp_normalization"],
+        "staleness_seconds": 90
+      }
+    }
+  },
+  "scanner_rankings": {
+    "top_movers": [
+      {
+        "rank": 1,
+        "symbol": "PLTR",
+        "composite_score": 96.7,
+        "price_change_percent": "5.12",
+        "volume_ratio": 1.87,
+        "momentum_score": 95.8
+      },
+      {
+        "rank": 2,
+        "symbol": "SOFI",
+        "composite_score": 98.4,
+        "price_change_percent": "6.72",
+        "volume_ratio": 2.14,
+        "momentum_score": 98.2
+      },
+      {
+        "rank": 3,
+        "symbol": "NVDA",
+        "composite_score": 92.1,
+        "price_change_percent": "1.85",
+        "volume_ratio": 0.32,
+        "momentum_score": 89.7
+      },
+      {
+        "rank": 6,
+        "symbol": "AMD",
+        "composite_score": 81.3,
+        "price_change_percent": "1.11",
+        "volume_ratio": 0.58,
+        "momentum_score": 75.4
+      },
+      {
+        "rank": 8,
+        "symbol": "TSLA",
+        "composite_score": 74.6,
+        "price_change_percent": "0.97",
+        "volume_ratio": 0.21,
+        "momentum_score": 71.2
+      }
+    ],
+    "volume_leaders": [
+      {
+        "symbol": "SOFI",
+        "volume_ratio": 2.14,
+        "current_volume": 48200000,
+        "dollar_volume": "405844000.00"
+      },
+      {
+        "symbol": "PLTR",
+        "volume_ratio": 1.87,
+        "current_volume": 65800000,
+        "dollar_volume": "1174730000.00"
+      },
+      {
+        "symbol": "QQQ",
+        "volume_ratio": 0.69,
+        "current_volume": 28900000,
+        "dollar_volume": "11521964000.00"
+      },
+      {
+        "symbol": "SPY",
+        "volume_ratio": 0.69,
+        "current_volume": 45200000,
+        "dollar_volume": "21509464000.00"
+      }
+    ],
+    "volatility_leaders": [
+      {
+        "symbol": "SOFI",
+        "volatility_score": 92.8,
+        "atr_14": "0.52",
+        "price_range_percent": "9.87"
+      },
+      {
+        "symbol": "PLTR", 
+        "volatility_score": 89.5,
+        "atr_14": "1.24",
+        "price_range_percent": "8.21"
+      },
+      {
+        "symbol": "NVDA",
+        "volatility_score": 85.4,
+        "atr_14": "15.67",
+        "price_range_percent": "3.00"
+      },
+      {
+        "symbol": "TSLA",
+        "volatility_score": 78.5,
+        "atr_14": "8.92",
+        "price_range_percent": "3.34"
+      }
+    ]
+  },
+  "alert_triggers": {
+    "momentum_surge": ["PLTR", "SOFI", "NVDA"],
+    "volume_breakout": ["PLTR", "SOFI", "NVDA"],
+    "price_acceleration": ["PLTR", "SOFI", "NVDA"],
+    "gap_up": ["PLTR", "SOFI"],
+    "volume_explosion": ["SOFI"],
+    "high_volatility": ["TSLA"],
+    "momentum_shift": ["TSLA"],
+    "volume_spike": ["AAPL"],
+    "price_breakout": ["AAPL"],
+    "volume_above_average": ["AMD"],
+    "momentum_continuation": ["AMD"],
+    "high_volume": ["SPY"],
+    "momentum_pickup": ["QQQ"],
+    "volume_increase": ["QQQ"]
+  },
+  "risk_assessment": {
+    "high_risk_symbols": ["PLTR", "SOFI"],
+    "medium_risk_symbols": ["NVDA", "TSLA", "AMD"],
+    "low_risk_symbols": ["AAPL", "SPY", "QQQ"],
+    "recommended_position_sizes": {
+      "PLTR": {
+        "max_allocation_percent": "2.5",
+        "kelly_criterion_size": "1.8",
+        "atr_adjusted_size": "1.2"
+      },
+      "SOFI": {
+        "max_allocation_percent": "2.0",
+        "kelly_criterion_size": "1.5",
+        "atr_adjusted_size": "1.0"
+      },
+      "NVDA": {
+        "max_allocation_percent": "5.0",
+        "kelly_criterion_size": "3.2",
+        "atr_adjusted_size": "2.8"
+      }
+    }
+  },
+  "performance_metrics": {
+    "data_freshness_seconds": 45,
+    "processing_time_ms": 2847,
+    "cache_hit_rate": 0.78,
+    "normalization_success_rate": 0.97,
+    "quality_validation_pass_rate": 0.94,
+    "provider_failover_events": 2,
+    "total_api_requests": 187,
+    "successful_api_requests": 181,
+    "cache_size_optimized": true
+  },
+  "technical_analysis_summary": {
+    "bullish_signals": 42,
+    "bearish_signals": 18,
+    "neutral_signals": 65,
+    "breakout_candidates": ["PLTR", "SOFI", "NVDA"],
+    "momentum_continuation": ["AMD", "TSLA"],
+    "volume_confirmation": ["PLTR", "SOFI", "QQQ", "SPY"],
+    "relative_strength_leaders": ["PLTR", "SOFI", "NVDA", "AMD"],
+    "sector_rotation_signals": {
+      "technology": "strong_bullish",
+      "financial_services": "moderate_bullish",
+      "consumer_cyclical": "neutral"
+    }
+  },
+  "cache_configuration": {
+    "ttl_seconds": 1800,
+    "auto_refresh_enabled": true,
+    "compression_enabled": false,
+    "encryption_enabled": false,
+    "max_symbols": 500,
+    "quality_threshold_minimum": 75.0,
+    "staleness_threshold_seconds": 300,
+    "provider_timeout_ms": 5000,
+    "retry_attempts": 3,
+    "circuit_breaker_threshold": 5
+  }
+}
