@@ -1,4 +1,86 @@
-streamlit
-pandas
-requests
-plotly
+# Trading Platform - PyQt6 Desktop Application Dependencies
+# Complete transformation from Streamlit web app to native Windows desktop application
+
+# ============================================================================
+# CORE GUI FRAMEWORK
+# ============================================================================
+# PyQt6 native Windows desktop application framework with professional UI components
+PyQt6>=6.4.0
+PyQt6-tools>=6.4.0
+
+# ============================================================================
+# DATA SOURCES & API INTEGRATION
+# ============================================================================
+# Multi-source market data providers with automatic failover capabilities
+yfinance>=0.2.28              # Yahoo Finance API - Primary data source
+iexfinance>=0.5.0             # IEX Cloud - Premium data provider
+alpha-vantage>=2.3.1          # Alpha Vantage - Secondary/validation source
+
+# ============================================================================
+# DATA PROCESSING & ANALYSIS
+# ============================================================================
+# Enhanced financial data processing for 100+ securities concurrent analysis
+pandas>=2.0.0                 # High-performance data manipulation and analysis
+numpy>=1.24.0                 # Numerical computing for technical indicators
+scipy>=1.10.1                 # Statistical functions for risk calculations
+
+# ============================================================================
+# ASYNCHRONOUS PROCESSING
+# ============================================================================
+# Concurrent API operations with Qt integration for responsive UI
+aiohttp>=3.8.0                # Async HTTP client for concurrent API calls
+qasync>=0.28.0                # Qt/asyncio event loop integration
+requests>=2.31.0              # Synchronous HTTP requests (legacy compatibility)
+
+# ============================================================================
+# DATABASE & PERSISTENCE
+# ============================================================================
+# Professional database management with schema versioning
+SQLAlchemy>=2.0.15            # Modern async-capable ORM
+Alembic>=1.11.1               # Database schema migration management
+
+# ============================================================================
+# CONFIGURATION & SECURITY
+# ============================================================================
+# Type-safe configuration and secure credential management
+pydantic>=1.10.9              # Data validation and settings management
+python-dotenv>=1.0.0          # Environment variable management
+keyring>=24.3.0               # Secure credential storage via Windows Credential Manager
+
+# ============================================================================
+# WINDOWS INTEGRATION
+# ============================================================================
+# Native Windows desktop features and system integration
+pywin32>=306                  # Windows API integration for notifications and system tray
+
+# ============================================================================
+# DATA EXPORT & REPORTING
+# ============================================================================
+# Professional data export capabilities
+openpyxl>=3.1.0               # Excel file generation for trading journal and scanner results
+
+# ============================================================================
+# APPLICATION PACKAGING & DEPLOYMENT
+# ============================================================================
+# Single-executable distribution with embedded dependencies
+pyinstaller>=6.0.0           # Windows executable packaging
+
+# ============================================================================
+# UPDATES & MAINTENANCE
+# ============================================================================
+# Professional auto-update system with security verification
+pyupdater>=4.0                # Secure application update management
+
+# ============================================================================
+# UTILITY LIBRARIES
+# ============================================================================
+# Date/time handling and utility functions
+python-dateutil>=2.8.0       # Enhanced date/time parsing and manipulation
+
+# ============================================================================
+# OPTIONAL ENHANCEMENTS (Future Implementation)
+# ============================================================================
+# News and financial calendar integration services
+# newsapi-python>=0.2.7      # News API integration
+# finnhub-python>=2.4.19     # Professional financial news
+# fmp-python>=0.2.4          # Financial Modeling Prep earnings calendar
