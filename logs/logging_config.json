@@ -1,0 +1,410 @@
+{
+  "version": "1.0",
+  "formatters": {
+    "json_formatter": {
+      "format": "%(asctime)s",
+      "class": "pythonjsonlogger.jsonlogger.JsonFormatter",
+      "format_fields": [
+        "timestamp",
+        "level",
+        "component",
+        "correlation_id",
+        "message",
+        "context"
+      ]
+    },
+    "detailed_formatter": {
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(correlation_id)s - %(message)s",
+      "datefmt": "%Y-%m-%d %H:%M:%S"
+    },
+    "simple_formatter": {
+      "format": "%(levelname)s - %(message)s"
+    }
+  },
+  "filters": {
+    "correlation_filter": {
+      "class": "logging.Filter",
+      "description": "Adds correlation_id to log records for request tracing"
+    }
+  },
+  "handlers": {
+    "application_operations": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/application_operations.log",
+      "maxBytes": 104857600,
+      "backupCount": 90,
+      "formatter": "json_formatter",
+      "level": "INFO",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Application operations and feature usage tracking with 90-day retention"
+    },
+    "error_events": {
+      "class": "logging.handlers.RotatingFileHandler", 
+      "filename": "${APPDATA}/TradingApp/logs/errors/error_events.log",
+      "maxBytes": 104857600,
+      "backupCount": 180,
+      "formatter": "json_formatter",
+      "level": "ERROR",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Error events and critical issues with 180-day retention for debugging"
+    },
+    "performance_metrics": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/performance/performance_metrics.log",
+      "maxBytes": 104857600,
+      "backupCount": 30,
+      "formatter": "json_formatter",
+      "level": "DEBUG",
+      "encoding": "utf-8",
+      "compression": "gzip", 
+      "when": "midnight",
+      "interval": 1,
+      "description": "Performance metrics and timing data with 30-day retention"
+    },
+    "security_events": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/security_events.log",
+      "maxBytes": 104857600,
+      "backupCount": 180,
+      "formatter": "json_formatter",
+      "level": "WARNING",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight", 
+      "interval": 1,
+      "description": "Security events, authentication, and API access with 180-day retention"
+    },
+    "data_provider_failover": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/data_provider_failover.log",
+      "maxBytes": 104857600,
+      "backupCount": 180,
+      "formatter": "json_formatter",
+      "level": "INFO",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Provider switching, failover triggers, and recovery events with 180-day retention"
+    },
+    "circuit_breaker_events": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/circuit_breaker_events.log",
+      "maxBytes": 104857600,
+      "backupCount": 180,
+      "formatter": "json_formatter",
+      "level": "WARNING",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Circuit state changes, breaker activation, and recovery timing with 180-day retention"
+    },
+    "risk_calculator_operations": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/risk_calculator_operations.log",
+      "maxBytes": 104857600,
+      "backupCount": 90,
+      "formatter": "json_formatter",
+      "level": "INFO",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "ATR calculations, position sizing, and risk allocation decisions with 90-day retention"
+    },
+    "paper_trading_operations": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/paper_trading_operations.log",
+      "maxBytes": 104857600,
+      "backupCount": 90,
+      "formatter": "json_formatter",
+      "level": "INFO",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Virtual trade execution, portfolio updates, and P/L calculations with 90-day retention"
+    },
+    "trading_journal_operations": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/trading_journal_operations.log",
+      "maxBytes": 104857600,
+      "backupCount": 90,
+      "formatter": "json_formatter",
+      "level": "INFO",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Entry persistence, search operations, and data integrity with 90-day retention"
+    },
+    "data_export_operations": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "filename": "${APPDATA}/TradingApp/logs/data_export_operations.log",
+      "maxBytes": 104857600,
+      "backupCount": 90,
+      "formatter": "json_formatter",
+      "level": "INFO",
+      "encoding": "utf-8",
+      "compression": "gzip",
+      "when": "midnight",
+      "interval": 1,
+      "description": "Excel generation, formatting operations, and file system writes with 90-day retention"
+    },
+    "console_handler": {
+      "class": "logging.StreamHandler",
+      "formatter": "simple_formatter",
+      "level": "INFO",
+      "stream": "ext://sys.stdout",
+      "description": "Console output for development and debugging"
+    }
+  },
+  "loggers": {
+    "src.main": {
+      "level": "INFO",
+      "handlers": ["application_operations", "console_handler"],
+      "propagate": false,
+      "description": "PyQt6 application entry point and initialization"
+    },
+    "src.gui.main_window": {
+      "level": "INFO", 
+      "handlers": ["application_operations", "console_handler"],
+      "propagate": false,
+      "description": "Main application window and tab management"
+    },
+    "src.gui.scanner_tab": {
+      "level": "INFO",
+      "handlers": ["application_operations", "performance_metrics", "console_handler"],
+      "propagate": false,
+      "description": "Premarket scanner interface and filtering controls"
+    },
+    "src.gui.trading_tab": {
+      "level": "INFO",
+      "handlers": ["paper_trading_operations", "application_operations", "console_handler"],
+      "propagate": false,
+      "description": "Paper trading interface and portfolio display"
+    },
+    "src.gui.risk_calculator_tab": {
+      "level": "INFO",
+      "handlers": ["risk_calculator_operations", "application_operations", "console_handler"],
+      "propagate": false,
+      "description": "Position sizing and risk management interface"
+    },
+    "src.gui.journal_tab": {
+      "level": "INFO",
+      "handlers": ["trading_journal_operations", "application_operations", "console_handler"],
+      "propagate": false,
+      "description": "Trading journal with note-taking capabilities"
+    },
+    "src.gui.settings_tab": {
+      "level": "INFO",
+      "handlers": ["application_operations", "security_events", "console_handler"],
+      "propagate": false,
+      "description": "Application configuration and API key management"
+    },
+    "src.core.data_integration": {
+      "level": "INFO",
+      "handlers": ["data_provider_failover", "circuit_breaker_events", "application_operations", "console_handler"],
+      "propagate": false,
+      "description": "Multi-source data provider with failover logic"
+    },
+    "src.core.scanner_engine": {
+      "level": "INFO",
+      "handlers": ["performance_metrics", "application_operations", "console_handler"],
+      "propagate": false,
+      "description": "Market scanning algorithms and ranking logic"
+    },
+    "src.core.risk_calculator": {
+      "level": "INFO",
+      "handlers": ["risk_calculator_operations", "performance_metrics", "console_handler"],
+      "propagate": false,
+      "description": "Position sizing and allocation calculations"
+    },
+    "src.core.paper_trading": {
+      "level": "INFO",
+      "handlers": ["paper_trading_operations", "performance_metrics", "console_handler"],
+      "propagate": false,
+      "description": "Virtual portfolio and trade execution logic"
+    },
+    "src.core.alert_manager": {
+      "level": "INFO",
+      "handlers": ["application_operations", "security_events", "console_handler"],
+      "propagate": false,
+      "description": "Background monitoring and notification service"
+    },
+    "src.models.database": {
+      "level": "INFO",
+      "handlers": ["application_operations", "performance_metrics", "console_handler"],
+      "propagate": false,
+      "description": "SQLite database schema and access layer"
+    },
+    "src.utils.export": {
+      "level": "INFO",
+      "handlers": ["data_export_operations", "performance_metrics", "console_handler"],
+      "propagate": false,
+      "description": "Excel export functionality and file generation"
+    },
+    "root": {
+      "level": "INFO",
+      "handlers": ["application_operations", "error_events", "console_handler"],
+      "description": "Root logger for unhandled application events"
+    }
+  },
+  "logging_structure": {
+    "base_directory": "${APPDATA}/TradingApp/logs",
+    "subdirectories": {
+      "errors": {
+        "path": "errors/",
+        "description": "Error events and critical issues directory",
+        "retention_days": 180
+      },
+      "performance": {
+        "path": "performance/",
+        "description": "Performance metrics and timing data directory",
+        "retention_days": 30
+      }
+    },
+    "directory_permissions": {
+      "mode": "0755",
+      "owner": "current_user",
+      "description": "Secure directory permissions for log storage"
+    }
+  },
+  "correlation_id_patterns": {
+    "risk_calculator": "risk_calc_{timestamp}_{random}",
+    "paper_trading": "paper_trade_{timestamp}_{random}",
+    "trading_journal": "journal_op_{timestamp}_{random}",
+    "data_export": "export_gen_{timestamp}_{random}",
+    "provider_failover": "failover_{timestamp}_{random}",
+    "circuit_breaker": "circuit_br_{timestamp}_{random}",
+    "general": "req_{timestamp}_{random}",
+    "format_specification": {
+      "timestamp": "YYYYMMDD_HHMMSS",
+      "random": "6_character_alphanumeric"
+    }
+  },
+  "log_level_configuration": {
+    "development": {
+      "global_level": "DEBUG",
+      "console_level": "DEBUG",
+      "file_level": "INFO"
+    },
+    "production": {
+      "global_level": "INFO", 
+      "console_level": "WARNING",
+      "file_level": "INFO"
+    },
+    "performance_analysis": {
+      "global_level": "DEBUG",
+      "console_level": "ERROR",
+      "file_level": "DEBUG"
+    }
+  },
+  "log_rotation_settings": {
+    "max_file_size": "100MB",
+    "rotation_type": "size_and_time",
+    "time_rotation": {
+      "when": "midnight",
+      "interval": 1,
+      "backup_count_based_on_retention": true
+    },
+    "size_rotation": {
+      "max_bytes": 104857600,
+      "backup_count": "calculated_from_retention_policy"
+    },
+    "compression": {
+      "enabled": true,
+      "algorithm": "gzip",
+      "compression_level": 6
+    }
+  },
+  "performance_monitoring": {
+    "log_operation_timing": true,
+    "correlation_tracking": true,
+    "memory_usage_logging": false,
+    "disk_usage_monitoring": true,
+    "log_statistics": {
+      "collect_metrics": true,
+      "metrics_interval_seconds": 300,
+      "metrics_retention_days": 7
+    }
+  },
+  "security_configuration": {
+    "sanitize_sensitive_data": true,
+    "api_key_masking": true,
+    "credential_redaction": true,
+    "pii_filtering": true,
+    "sensitive_patterns": [
+      "api_key",
+      "password",
+      "token",
+      "secret",
+      "credential",
+      "auth"
+    ]
+  },
+  "error_handling": {
+    "fallback_handler": {
+      "class": "logging.StreamHandler",
+      "level": "ERROR",
+      "formatter": "simple_formatter"
+    },
+    "error_notification": {
+      "critical_errors_to_console": true,
+      "log_handler_failures": true,
+      "backup_log_location": "${APPDATA}/TradingApp/logs/fallback.log"
+    }
+  },
+  "integration_settings": {
+    "json_library": "pythonjsonlogger",
+    "qt_integration": {
+      "qlogging_category_support": true,
+      "qt_message_handler": true,
+      "signal_slot_logging": false
+    },
+    "windows_integration": {
+      "event_log_support": false,
+      "windows_path_resolution": true,
+      "credential_manager_logging": true
+    }
+  },
+  "validation_rules": {
+    "required_directories": [
+      "${APPDATA}/TradingApp/logs",
+      "${APPDATA}/TradingApp/logs/errors",
+      "${APPDATA}/TradingApp/logs/performance"
+    ],
+    "log_file_validation": {
+      "json_format_validation": true,
+      "correlation_id_validation": true,
+      "timestamp_validation": true
+    },
+    "retention_policy_enforcement": {
+      "automated_cleanup": true,
+      "cleanup_schedule": "daily_2am",
+      "cleanup_safety_margin_days": 7
+    }
+  },
+  "metadata": {
+    "configuration_version": "1.0",
+    "created_for": "PyQt6 Desktop Trading Application",
+    "compliance": [
+      "Section 6.5.2.3.1 Structured Logging Implementation",
+      "Section 5.4.2 Logging and Tracing Strategy",
+      "Multi-category logging with retention policies",
+      "File rotation with 100MB size limits and compression"
+    ],
+    "last_updated": "2024-01-15",
+    "schema_validation": {
+      "json_schema_file": "logging_config_schema.json",
+      "validation_required": true
+    }
+  }
+}

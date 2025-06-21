@@ -1,0 +1,640 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "Trading Platform Log Templates",
+  "description": "Structured JSON log templates for comprehensive audit trails across all application components including Risk Calculator, Paper Trading Simulator, Trading Journal, and Export operations",
+  "version": "1.0.0",
+  "templates": {
+    "base_template": {
+      "timestamp": "YYYY-MM-DDTHH:mm:ss.sssZ",
+      "correlation_id": "req_{uuid4_short}_{timestamp}",
+      "component": "component_name",
+      "level": "INFO|DEBUG|WARNING|ERROR|CRITICAL",
+      "message": "Human-readable log message",
+      "context": {
+        "module": "module_name",
+        "operation": "operation_type",
+        "execution_time_ms": "numeric_value",
+        "user_action": "user_action_description",
+        "session_id": "session_identifier"
+      }
+    },
+    "correlation_id_patterns": {
+      "risk_calculator": "risk_calc_{date}_{time}_{short_uuid}",
+      "paper_trading": "paper_trade_{date}_{time}_{short_uuid}",
+      "trading_journal": "journal_op_{date}_{time}_{short_uuid}",
+      "data_export": "export_gen_{date}_{time}_{short_uuid}",
+      "scanner_engine": "scanner_{date}_{time}_{short_uuid}",
+      "alert_manager": "alert_{date}_{time}_{short_uuid}",
+      "data_provider": "provider_{date}_{time}_{short_uuid}",
+      "circuit_breaker": "circuit_br_{date}_{time}_{short_uuid}",
+      "failover": "failover_{date}_{time}_{short_uuid}",
+      "user_request": "usr_{user_id}_{date}_{time}_{short_uuid}"
+    },
+    "risk_calculator": {
+      "atr_calculation": {
+        "timestamp": "2024-01-15T10:30:45.123Z",
+        "correlation_id": "risk_calc_20240115_103045_def456",
+        "component": "risk_calculator",
+        "level": "INFO",
+        "message": "ATR calculation completed successfully",
+        "context": {
+          "module": "risk_calculator",
+          "operation": "atr_calculation",
+          "symbol": "AAPL",
+          "atr_period": 14,
+          "calculated_atr": 1.23,
+          "execution_time_ms": 45,
+          "data_points": 100,
+          "calculation_method": "true_range_average"
+        }
+      },
+      "position_sizing": {
+        "timestamp": "2024-01-15T10:31:12.456Z",
+        "correlation_id": "risk_calc_20240115_103112_ghi789",
+        "component": "risk_calculator",
+        "level": "INFO",
+        "message": "Position sizing calculation completed",
+        "context": {
+          "module": "risk_calculator",
+          "operation": "position_sizing",
+          "symbol": "AAPL",
+          "account_balance": 50000.00,
+          "risk_percent": 2.0,
+          "atr_value": 1.23,
+          "stop_loss_distance": 2.46,
+          "position_size": 150,
+          "position_value": 18450.00,
+          "execution_time_ms": 32,
+          "kelly_criterion_applied": true
+        }
+      },
+      "risk_breach": {
+        "timestamp": "2024-01-15T10:32:15.789Z",
+        "correlation_id": "risk_calc_20240115_103215_jkl012",
+        "component": "risk_calculator",
+        "level": "WARNING",
+        "message": "Risk allocation breach detected - position exceeds account risk threshold",
+        "context": {
+          "module": "risk_calculator",
+          "operation": "risk_validation",
+          "symbol": "TSLA",
+          "account_balance": 50000.00,
+          "max_risk_percent": 5.0,
+          "calculated_risk_percent": 6.2,
+          "position_value": 31000.00,
+          "breach_amount": 600.00,
+          "execution_time_ms": 15,
+          "automatic_adjustment": true,
+          "adjusted_position_size": 125
+        }
+      },
+      "calculation_error": {
+        "timestamp": "2024-01-15T10:33:45.123Z",
+        "correlation_id": "risk_calc_20240115_103345_mno345",
+        "component": "risk_calculator",
+        "level": "ERROR",
+        "message": "Risk calculation failed due to invalid market data",
+        "context": {
+          "module": "risk_calculator",
+          "operation": "position_sizing",
+          "symbol": "INVALID",
+          "error_type": "invalid_market_data",
+          "error_details": "ATR calculation failed - insufficient price history",
+          "execution_time_ms": 125,
+          "fallback_action": "use_default_risk_parameters",
+          "stack_trace": "detailed_stack_trace_here",
+          "system_state": {
+            "memory_usage_mb": 245,
+            "cpu_usage_percent": 15,
+            "database_connections": 3
+          }
+        }
+      }
+    },
+    "paper_trading": {
+      "trade_execution": {
+        "timestamp": "2024-01-15T11:15:30.456Z",
+        "correlation_id": "paper_trade_20240115_111530_abc123",
+        "component": "paper_trading_simulator",
+        "level": "INFO",
+        "message": "Virtual trade executed successfully",
+        "context": {
+          "module": "paper_trading_simulator",
+          "operation": "trade_execution",
+          "trade_id": "PT_001234",
+          "symbol": "AAPL",
+          "action": "BUY",
+          "quantity": 100,
+          "price": 185.50,
+          "slippage_amount": 0.05,
+          "commission": 0.00,
+          "execution_time_ms": 125,
+          "portfolio_value_before": 48650.00,
+          "portfolio_value_after": 66600.00,
+          "cash_remaining": 47950.00
+        }
+      },
+      "pnl_calculation": {
+        "timestamp": "2024-01-15T11:16:45.789Z",
+        "correlation_id": "paper_trade_20240115_111645_def456",
+        "component": "paper_trading_simulator",
+        "level": "INFO",
+        "message": "Portfolio P/L calculation completed",
+        "context": {
+          "module": "paper_trading_simulator",
+          "operation": "pnl_calculation",
+          "total_positions": 5,
+          "realized_pnl": 1250.75,
+          "unrealized_pnl": 325.50,
+          "total_pnl": 1576.25,
+          "execution_time_ms": 89,
+          "calculation_method": "mark_to_market",
+          "portfolio_return_percent": 3.15,
+          "sharpe_ratio": 1.45
+        }
+      },
+      "slippage_modeling": {
+        "timestamp": "2024-01-15T11:17:22.345Z",
+        "correlation_id": "paper_trade_20240115_111722_ghi789",
+        "component": "paper_trading_simulator",
+        "level": "DEBUG",
+        "message": "Slippage calculation applied to trade execution",
+        "context": {
+          "module": "paper_trading_simulator",
+          "operation": "slippage_modeling",
+          "symbol": "MSFT",
+          "order_size": 200,
+          "market_volume": 25000000,
+          "spread": 0.02,
+          "impact_factor": 0.001,
+          "calculated_slippage": 0.03,
+          "execution_time_ms": 45,
+          "model_type": "linear_impact",
+          "market_conditions": "normal_volatility"
+        }
+      },
+      "portfolio_performance": {
+        "timestamp": "2024-01-15T11:18:15.678Z",
+        "correlation_id": "paper_trade_20240115_111815_jkl012",
+        "component": "paper_trading_simulator",
+        "level": "INFO",
+        "message": "Portfolio performance analysis completed",
+        "context": {
+          "module": "paper_trading_simulator",
+          "operation": "performance_analysis",
+          "total_trades": 47,
+          "winning_trades": 28,
+          "losing_trades": 19,
+          "win_rate": 59.57,
+          "avg_win": 245.30,
+          "avg_loss": -125.75,
+          "profit_factor": 1.95,
+          "max_drawdown": -850.25,
+          "execution_time_ms": 156,
+          "analysis_period_days": 30
+        }
+      }
+    },
+    "trading_journal": {
+      "entry_creation": {
+        "timestamp": "2024-01-15T12:30:15.234Z",
+        "correlation_id": "journal_op_20240115_123015_abc789",
+        "component": "trading_journal",
+        "level": "INFO",
+        "message": "Journal entry created successfully",
+        "context": {
+          "module": "trading_journal",
+          "operation": "entry_creation",
+          "entry_id": "JE_001234",
+          "entry_type": "trade_analysis",
+          "symbol": "AAPL",
+          "tags": ["momentum", "earnings_play", "high_volume"],
+          "content_length": 1250,
+          "execution_time_ms": 45,
+          "database_transaction_time_ms": 15,
+          "auto_save_enabled": true,
+          "backup_created": true
+        }
+      },
+      "entry_search": {
+        "timestamp": "2024-01-15T12:31:45.567Z",
+        "correlation_id": "journal_op_20240115_123145_def012",
+        "component": "trading_journal",
+        "level": "DEBUG",
+        "message": "Journal search query executed",
+        "context": {
+          "module": "trading_journal",
+          "operation": "search_query",
+          "search_terms": ["AAPL", "momentum"],
+          "search_type": "tag_and_text",
+          "results_count": 12,
+          "execution_time_ms": 89,
+          "database_query_time_ms": 67,
+          "search_optimization": "full_text_index",
+          "total_entries_searched": 847
+        }
+      },
+      "database_write": {
+        "timestamp": "2024-01-15T12:32:30.890Z",
+        "correlation_id": "journal_op_20240115_123230_ghi345",
+        "component": "trading_journal",
+        "level": "INFO",
+        "message": "Journal entry saved to database",
+        "context": {
+          "module": "trading_journal",
+          "operation": "database_write",
+          "entry_id": "JE_001235",
+          "transaction_type": "INSERT",
+          "execution_time_ms": 67,
+          "database_size_bytes": 15728640,
+          "backup_triggered": false,
+          "acid_compliance": true,
+          "wal_mode_enabled": true,
+          "integrity_check": "passed"
+        }
+      },
+      "write_error": {
+        "timestamp": "2024-01-15T12:33:15.123Z",
+        "correlation_id": "journal_op_20240115_123315_jkl678",
+        "component": "trading_journal",
+        "level": "ERROR",
+        "message": "Journal database write operation failed",
+        "context": {
+          "module": "trading_journal",
+          "operation": "database_write",
+          "entry_id": "JE_001236",
+          "error_type": "database_lock_timeout",
+          "error_details": "Database locked by concurrent operation - timeout after 3 seconds",
+          "execution_time_ms": 3000,
+          "retry_count": 3,
+          "fallback_action": "cache_entry_locally",
+          "recovery_procedure": "auto_retry_with_backup",
+          "system_state": {
+            "disk_space_available_mb": 15000,
+            "database_connections": 5,
+            "concurrent_writes": 2
+          },
+          "stack_trace": "detailed_stack_trace_here"
+        }
+      }
+    },
+    "data_export": {
+      "excel_generation": {
+        "timestamp": "2024-01-15T13:45:20.345Z",
+        "correlation_id": "export_gen_20240115_134520_abc456",
+        "component": "export_utility",
+        "level": "INFO",
+        "message": "Excel export generation completed successfully",
+        "context": {
+          "module": "export_utility",
+          "operation": "excel_generation",
+          "export_type": "trade_history",
+          "record_count": 2547,
+          "file_path": "%APPDATA%/TradingApp/exports/trade_history_20240115.xlsx",
+          "file_size_bytes": 875432,
+          "execution_time_ms": 1245,
+          "excel_formatting_time_ms": 345,
+          "openpyxl_version": "3.1.0",
+          "sheets_created": 3,
+          "charts_embedded": 2
+        }
+      },
+      "csv_export": {
+        "timestamp": "2024-01-15T13:46:45.678Z",
+        "correlation_id": "export_gen_20240115_134645_def789",
+        "component": "export_utility",
+        "level": "INFO",
+        "message": "CSV export completed as Excel fallback",
+        "context": {
+          "module": "export_utility",
+          "operation": "csv_export",
+          "export_type": "scanner_results",
+          "record_count": 10000,
+          "file_path": "%APPDATA%/TradingApp/exports/scanner_results_20240115.csv",
+          "file_size_bytes": 2456780,
+          "execution_time_ms": 567,
+          "fallback_reason": "excel_generation_timeout",
+          "original_format": "xlsx",
+          "compression_applied": false
+        }
+      },
+      "large_dataset_export": {
+        "timestamp": "2024-01-15T13:47:30.123Z",
+        "correlation_id": "export_gen_20240115_134730_ghi012",
+        "component": "export_utility",
+        "level": "INFO",
+        "message": "Large dataset export completed with optimization",
+        "context": {
+          "module": "export_utility",
+          "operation": "large_dataset_export",
+          "export_type": "historical_data",
+          "record_count": 50000,
+          "file_path": "%APPDATA%/TradingApp/exports/historical_data_20240115.xlsx",
+          "file_size_bytes": 15600000,
+          "execution_time_ms": 8945,
+          "memory_optimization": true,
+          "streaming_enabled": true,
+          "batch_size": 1000,
+          "compression_ratio": 0.65,
+          "performance_target_met": true
+        }
+      },
+      "export_failure": {
+        "timestamp": "2024-01-15T13:48:15.456Z",
+        "correlation_id": "export_gen_20240115_134815_jkl345",
+        "component": "export_utility",
+        "level": "ERROR",
+        "message": "Export operation failed due to insufficient disk space",
+        "context": {
+          "module": "export_utility",
+          "operation": "excel_generation",
+          "export_type": "performance_report",
+          "record_count": 5000,
+          "error_type": "insufficient_disk_space",
+          "error_details": "Disk space required: 500MB, Available: 250MB",
+          "execution_time_ms": 2000,
+          "recovery_procedure": "cleanup_temp_files_and_retry",
+          "fallback_format": "csv",
+          "automatic_retry": true,
+          "system_state": {
+            "disk_space_available_mb": 250,
+            "temp_files_size_mb": 150,
+            "memory_usage_mb": 450
+          },
+          "stack_trace": "detailed_stack_trace_here"
+        }
+      }
+    },
+    "scanner_engine": {
+      "market_scan": {
+        "timestamp": "2024-01-15T09:30:00.123Z",
+        "correlation_id": "scanner_20240115_093000_abc123",
+        "component": "scanner_engine",
+        "level": "INFO",
+        "message": "Market scan completed successfully",
+        "context": {
+          "module": "scanner_engine",
+          "operation": "market_scan",
+          "symbols_scanned": 524,
+          "criteria_applied": ["volume_threshold", "price_change", "atr_filter"],
+          "results_count": 47,
+          "execution_time_ms": 8750,
+          "concurrent_threads": 8,
+          "api_calls_made": 524,
+          "cache_hits": 156,
+          "scan_type": "premarket_analysis"
+        }
+      },
+      "vwap_calculation": {
+        "timestamp": "2024-01-15T09:31:15.456Z",
+        "correlation_id": "scanner_20240115_093115_def456",
+        "component": "scanner_engine",
+        "level": "DEBUG",
+        "message": "VWAP calculation completed for security",
+        "context": {
+          "module": "scanner_engine",
+          "operation": "vwap_calculation",
+          "symbol": "AAPL",
+          "time_period": "intraday",
+          "data_points": 390,
+          "calculated_vwap": 185.47,
+          "current_price": 186.20,
+          "price_vs_vwap": 0.39,
+          "execution_time_ms": 45,
+          "calculation_method": "cumulative_average"
+        }
+      }
+    },
+    "alert_manager": {
+      "alert_triggered": {
+        "timestamp": "2024-01-15T14:15:30.789Z",
+        "correlation_id": "alert_20240115_141530_abc789",
+        "component": "alert_manager",
+        "level": "WARNING",
+        "message": "Price alert triggered for monitored security",
+        "context": {
+          "module": "alert_manager",
+          "operation": "alert_evaluation",
+          "alert_id": "ALT_001234",
+          "symbol": "TSLA",
+          "alert_type": "price_breakout",
+          "trigger_condition": "price > 250.00",
+          "current_price": 251.45,
+          "threshold_value": 250.00,
+          "execution_time_ms": 15,
+          "notification_sent": true,
+          "notification_method": "windows_toast",
+          "user_acknowledgment_required": false
+        }
+      },
+      "continuous_monitoring": {
+        "timestamp": "2024-01-15T14:16:00.123Z",
+        "correlation_id": "alert_20240115_141600_def012",
+        "component": "alert_manager",
+        "level": "DEBUG",
+        "message": "Alert evaluation cycle completed",
+        "context": {
+          "module": "alert_manager",
+          "operation": "continuous_monitoring",
+          "active_alerts": 12,
+          "alerts_evaluated": 12,
+          "triggers_detected": 1,
+          "execution_time_ms": 234,
+          "evaluation_frequency": "30_seconds",
+          "background_thread_id": "QThread_2",
+          "memory_usage_mb": 15
+        }
+      }
+    },
+    "data_provider": {
+      "provider_failover": {
+        "timestamp": "2024-01-15T10:45:30.567Z",
+        "correlation_id": "failover_20240115_104530_abc234",
+        "component": "data_provider_manager",
+        "level": "WARNING",
+        "message": "Provider failover triggered due to rate limit exceeded",
+        "context": {
+          "module": "data_provider_failover",
+          "operation": "automatic_failover",
+          "failed_provider": "alpha_vantage",
+          "fallback_provider": "yahoo_finance",
+          "failure_reason": "rate_limit_exceeded",
+          "circuit_breaker_state": "half_open",
+          "retry_count": 3,
+          "execution_time_ms": 125,
+          "failover_success": true,
+          "provider_performance": {
+            "alpha_vantage_success_rate": 0.82,
+            "yahoo_finance_success_rate": 0.96,
+            "iex_cloud_success_rate": 0.98
+          }
+        }
+      },
+      "circuit_breaker": {
+        "timestamp": "2024-01-15T10:46:15.890Z",
+        "correlation_id": "circuit_br_20240115_104615_def567",
+        "component": "circuit_breaker",
+        "level": "ERROR",
+        "message": "Circuit breaker opened due to consecutive failures",
+        "context": {
+          "module": "circuit_breaker",
+          "operation": "state_transition",
+          "provider": "alpha_vantage",
+          "previous_state": "closed",
+          "new_state": "open",
+          "failure_count": 5,
+          "failure_threshold": 5,
+          "time_window_seconds": 300,
+          "recovery_timeout_seconds": 300,
+          "execution_time_ms": 5,
+          "automatic_recovery": true
+        }
+      }
+    },
+    "performance_metrics": {
+      "qtimer_measurement": {
+        "timestamp": "2024-01-15T15:30:45.234Z",
+        "correlation_id": "perf_20240115_153045_abc345",
+        "component": "performance_monitor",
+        "level": "DEBUG",
+        "message": "QElapsedTimer performance measurement recorded",
+        "context": {
+          "module": "performance_monitor",
+          "operation": "qtimer_measurement",
+          "measurement_type": "ui_response_time",
+          "component_measured": "scanner_tab",
+          "elapsed_time_ms": 67,
+          "threshold_ms": 100,
+          "threshold_exceeded": false,
+          "execution_time_ms": 2,
+          "measurement_precision": "microsecond",
+          "thread_id": "main_ui_thread"
+        }
+      },
+      "memory_usage": {
+        "timestamp": "2024-01-15T15:31:30.567Z",
+        "correlation_id": "perf_20240115_153130_def678",
+        "component": "system_monitor",
+        "level": "INFO",
+        "message": "System resource usage measurement recorded",
+        "context": {
+          "module": "system_monitor",
+          "operation": "resource_measurement",
+          "memory_usage_mb": 387,
+          "cpu_usage_percent": 18.5,
+          "disk_io_read_mb": 12.3,
+          "disk_io_write_mb": 5.7,
+          "network_bytes_sent": 45678,
+          "network_bytes_received": 123456,
+          "execution_time_ms": 25,
+          "measurement_source": "psutil"
+        }
+      }
+    },
+    "error_context": {
+      "system_error": {
+        "timestamp": "2024-01-15T16:45:30.123Z",
+        "correlation_id": "error_20240115_164530_abc890",
+        "component": "system_error_handler",
+        "level": "CRITICAL",
+        "message": "Critical system error with comprehensive context capture",
+        "context": {
+          "module": "error_handler",
+          "operation": "critical_error_handling",
+          "error_type": "database_corruption",
+          "error_code": "DB_CORRUPT_001",
+          "error_details": "SQLite database corruption detected during integrity check",
+          "execution_time_ms": 450,
+          "recovery_attempted": true,
+          "recovery_success": false,
+          "user_action_sequence": [
+            "opened_application",
+            "initiated_market_scan",
+            "accessed_trading_journal",
+            "attempted_database_write"
+          ],
+          "system_state": {
+            "memory_usage_mb": 512,
+            "cpu_usage_percent": 45,
+            "disk_space_available_mb": 8500,
+            "database_size_mb": 250,
+            "active_connections": 3,
+            "background_threads": 5,
+            "qt_version": "6.4.2",
+            "python_version": "3.11.5"
+          },
+          "stack_trace": "Complete stack trace with file paths and line numbers",
+          "recovery_procedures": [
+            "backup_current_database",
+            "restore_from_latest_backup",
+            "rebuild_database_schema",
+            "notify_user_of_data_recovery"
+          ]
+        }
+      }
+    }
+  },
+  "log_levels": {
+    "DEBUG": {
+      "description": "Detailed diagnostic information for development and troubleshooting",
+      "retention_days": 30,
+      "file_rotation": "daily"
+    },
+    "INFO": {
+      "description": "General operational information about normal application behavior",
+      "retention_days": 90,
+      "file_rotation": "daily"
+    },
+    "WARNING": {
+      "description": "Indicators of potential issues or performance degradation",
+      "retention_days": 180,
+      "file_rotation": "daily"
+    },
+    "ERROR": {
+      "description": "Error conditions that affect functionality but allow continued operation",
+      "retention_days": 180,
+      "file_rotation": "daily"
+    },
+    "CRITICAL": {
+      "description": "Severe error conditions requiring immediate attention and possible recovery",
+      "retention_days": 180,
+      "file_rotation": "daily"
+    }
+  },
+  "storage_configuration": {
+    "log_directory": "%APPDATA%/TradingApp/logs/",
+    "max_file_size_mb": 100,
+    "compression_enabled": true,
+    "backup_retention_days": 90,
+    "structured_format": "json",
+    "fallback_format": "text"
+  },
+  "context_fields": {
+    "required": [
+      "timestamp",
+      "correlation_id",
+      "component",
+      "level",
+      "message"
+    ],
+    "optional": [
+      "module",
+      "operation",
+      "execution_time_ms",
+      "user_action",
+      "session_id",
+      "error_type",
+      "error_details",
+      "stack_trace",
+      "system_state",
+      "recovery_procedure"
+    ]
+  },
+  "integration_notes": {
+    "qtimer_integration": "All performance measurements utilize QElapsedTimer for microsecond precision timing",
+    "correlation_tracing": "Correlation IDs enable end-to-end request tracing across component boundaries",
+    "error_recovery": "Error templates include automatic recovery procedures and system state capture",
+    "module_isolation": "Each functional module maintains separate log templates for targeted troubleshooting",
+    "compliance": "Log retention and structure support audit trails for trading simulation activities"
+  }
+}

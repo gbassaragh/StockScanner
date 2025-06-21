@@ -1,0 +1,322 @@
+{
+  "_cache_metadata": {
+    "cache_version": "2.1.0",
+    "provider_name": "iex_cloud",
+    "provider_tier": "premium_professional",
+    "cache_type": "streaming_and_rest",
+    "created_timestamp": "2024-01-15T10:30:00.000Z",
+    "last_updated": "2024-01-15T10:30:00.000Z",
+    "last_accessed": "2024-01-15T10:30:00.000Z",
+    "cache_format": "json_compressed",
+    "schema_version": "6.3.2.1",
+    "latency_target_ms": 100,
+    "compression_enabled": true,
+    "encryption_enabled": false,
+    "total_entries": 0,
+    "active_websocket_sessions": 0,
+    "cache_size_bytes": 0,
+    "max_cache_size_mb": 256,
+    "performance_profile": "premium_low_latency"
+  },
+  
+  "_provider_configuration": {
+    "provider_id": "iex_cloud",
+    "authentication_method": "publishable_token",
+    "base_weight": 30,
+    "max_requests_per_minute": 100,
+    "max_requests_per_hour": 6000,
+    "timeout_seconds": 5,
+    "circuit_breaker_threshold": 3,
+    "circuit_breaker_timeout": 30,
+    "websocket_enabled": true,
+    "streaming_channels": ["quotes", "tops", "last", "deep"],
+    "real_time_streaming": true,
+    "premium_features": ["real_time_streaming", "level_2_data", "options_data"],
+    "data_delay_minutes": 0,
+    "max_symbols_per_batch": 100,
+    "websocket_endpoint": "wss://ws-api.iextrading.com/1.0/deep",
+    "batch_endpoint": "https://cloud.iexapis.com/stable/stock/market/batch"
+  },
+  
+  "_ttl_management": {
+    "default_ttl_seconds": 300,
+    "quote_data_ttl": 30,
+    "historical_data_ttl": 3600,
+    "fundamental_data_ttl": 7200,
+    "streaming_data_ttl": 15,
+    "websocket_metadata_ttl": 300,
+    "cleanup_interval_seconds": 60,
+    "max_stale_age_seconds": 1800,
+    "cache_warming_enabled": true,
+    "preload_symbols": ["SPY", "QQQ", "TSLA", "AAPL", "MSFT"],
+    "retention_policy": "smart_lru_with_frequency",
+    "compression_threshold_age_seconds": 300,
+    "archive_threshold_age_seconds": 3600
+  },
+  
+  "_websocket_streaming": {
+    "connection_status": "disconnected",
+    "last_connection_attempt": null,
+    "last_successful_connection": null,
+    "connection_retries": 0,
+    "max_connection_retries": 5,
+    "retry_backoff_seconds": [1, 2, 5, 10, 30],
+    "ping_interval_seconds": 30,
+    "ping_timeout_seconds": 10,
+    "message_buffer_size": 1000,
+    "compression_enabled": true,
+    "auto_reconnect": true,
+    "subscribed_channels": [],
+    "subscribed_symbols": [],
+    "message_rate_limit": 500,
+    "bandwidth_optimization": true,
+    "stream_quality_monitoring": true,
+    "latency_tracking": {
+      "enabled": true,
+      "target_ms": 100,
+      "current_avg_ms": 0,
+      "p95_latency_ms": 0,
+      "p99_latency_ms": 0,
+      "measurements_window": 1000
+    }
+  },
+  
+  "_performance_optimization": {
+    "sub_100ms_latency": {
+      "enabled": true,
+      "target_latency_ms": 100,
+      "current_performance": {
+        "avg_response_time_ms": 0,
+        "p95_response_time_ms": 0,
+        "p99_response_time_ms": 0,
+        "cache_hit_rate": 0.0,
+        "websocket_latency_ms": 0
+      },
+      "optimization_strategies": {
+        "memory_caching": true,
+        "connection_pooling": true,
+        "request_batching": true,
+        "preemptive_loading": true,
+        "compression": true
+      }
+    },
+    "cache_warming": {
+      "enabled": true,
+      "warm_cache_on_startup": true,
+      "premarket_symbols": ["SPY", "QQQ", "IWM", "TSLA", "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META"],
+      "market_hours_refresh": true,
+      "background_refresh_interval": 300,
+      "predictive_loading": true
+    },
+    "intelligent_failover": {
+      "enabled": true,
+      "failover_providers": ["yahoo_finance", "alpha_vantage"],
+      "health_check_interval": 60,
+      "auto_recovery": true,
+      "circuit_breaker_integration": true
+    }
+  },
+  
+  "_cache_statistics": {
+    "total_requests": 0,
+    "cache_hits": 0,
+    "cache_misses": 0,
+    "websocket_messages": 0,
+    "rest_api_calls": 0,
+    "data_compression_ratio": 0.0,
+    "average_response_time_ms": 0.0,
+    "peak_concurrent_requests": 0,
+    "error_count": 0,
+    "last_error": null,
+    "uptime_percentage": 100.0,
+    "bandwidth_saved_bytes": 0,
+    "performance_score": 100.0
+  },
+  
+  "real_time_quotes": {
+    "_section_metadata": {
+      "data_type": "streaming_quotes",
+      "update_frequency": "real_time",
+      "latency_target_ms": 50,
+      "retention_seconds": 30,
+      "compression": "gzip",
+      "format": "iex_cloud_native"
+    }
+  },
+  
+  "historical_data": {
+    "_section_metadata": {
+      "data_type": "historical_ohlcv",
+      "update_frequency": "end_of_day",
+      "latency_target_ms": 500,
+      "retention_seconds": 3600,
+      "compression": "gzip",
+      "format": "pandas_compatible"
+    }
+  },
+  
+  "batch_quotes": {
+    "_section_metadata": {
+      "data_type": "batch_quotes",
+      "update_frequency": "on_demand",
+      "latency_target_ms": 200,
+      "retention_seconds": 300,
+      "compression": "gzip",
+      "max_symbols_per_request": 100
+    }
+  },
+  
+  "company_fundamentals": {
+    "_section_metadata": {
+      "data_type": "fundamental_data",
+      "update_frequency": "daily",
+      "latency_target_ms": 1000,
+      "retention_seconds": 7200,
+      "compression": "gzip",
+      "format": "structured_json"
+    }
+  },
+  
+  "websocket_sessions": {
+    "_section_metadata": {
+      "data_type": "websocket_metadata",
+      "session_tracking": true,
+      "connection_persistence": true,
+      "message_history_limit": 1000,
+      "heartbeat_monitoring": true
+    }
+  },
+  
+  "streaming_data_buffer": {
+    "_section_metadata": {
+      "data_type": "streaming_buffer",
+      "buffer_size_messages": 1000,
+      "buffer_ttl_seconds": 60,
+      "overflow_strategy": "drop_oldest",
+      "real_time_processing": true,
+      "latency_optimization": true
+    }
+  },
+  
+  "_cache_management": {
+    "cleanup_policies": {
+      "expired_data_removal": {
+        "enabled": true,
+        "check_interval_seconds": 60,
+        "batch_size": 100
+      },
+      "lru_eviction": {
+        "enabled": true,
+        "max_entries": 10000,
+        "eviction_threshold": 0.8
+      },
+      "compression_aging": {
+        "enabled": true,
+        "age_threshold_seconds": 300,
+        "compression_level": 6
+      }
+    },
+    "data_validation": {
+      "enabled": true,
+      "schema_validation": true,
+      "data_quality_checks": true,
+      "anomaly_detection": true
+    },
+    "backup_and_recovery": {
+      "enabled": true,
+      "backup_interval_seconds": 3600,
+      "max_backup_age_hours": 24,
+      "recovery_validation": true
+    }
+  },
+  
+  "_integration_metadata": {
+    "multi_source_data_integration": {
+      "primary_provider": false,
+      "premium_provider": true,
+      "failover_priority": 2,
+      "weight_in_selection": 30,
+      "circuit_breaker_enabled": true
+    },
+    "data_normalization": {
+      "output_format": "pandas_dataframe",
+      "timestamp_standardization": "iso8601_utc",
+      "price_precision": 4,
+      "volume_precision": 0,
+      "currency": "USD"
+    },
+    "quality_assurance": {
+      "data_validation_enabled": true,
+      "outlier_detection": true,
+      "completeness_checks": true,
+      "latency_monitoring": true,
+      "accuracy_validation": true
+    }
+  },
+  
+  "_monitoring_and_alerting": {
+    "health_monitoring": {
+      "enabled": true,
+      "check_interval_seconds": 30,
+      "failure_threshold": 3,
+      "recovery_threshold": 5,
+      "metrics_collection": true
+    },
+    "performance_alerts": {
+      "enabled": true,
+      "latency_threshold_ms": 150,
+      "error_rate_threshold": 0.05,
+      "cache_miss_threshold": 0.3,
+      "connection_failure_threshold": 0.1
+    },
+    "notification_channels": {
+      "windows_notifications": true,
+      "application_logs": true,
+      "performance_dashboard": true,
+      "alert_manager_integration": true
+    }
+  },
+  
+  "_security_and_compliance": {
+    "data_protection": {
+      "encryption_at_rest": false,
+      "encryption_in_transit": true,
+      "data_sanitization": true,
+      "pii_protection": true
+    },
+    "audit_trail": {
+      "enabled": true,
+      "request_logging": true,
+      "access_logging": true,
+      "modification_tracking": true,
+      "retention_days": 90
+    },
+    "compliance": {
+      "data_retention_policy": "configurable",
+      "gdpr_compliance": true,
+      "financial_data_handling": true,
+      "audit_requirements": true
+    }
+  },
+  
+  "_advanced_features": {
+    "machine_learning_integration": {
+      "pattern_recognition": false,
+      "predictive_caching": false,
+      "anomaly_detection": true,
+      "performance_optimization": true
+    },
+    "analytics_and_reporting": {
+      "usage_analytics": true,
+      "performance_reporting": true,
+      "cost_analysis": false,
+      "trend_analysis": true
+    },
+    "extensibility": {
+      "plugin_support": false,
+      "custom_indicators": false,
+      "third_party_integration": true,
+      "api_extensions": false
+    }
+  }
+}

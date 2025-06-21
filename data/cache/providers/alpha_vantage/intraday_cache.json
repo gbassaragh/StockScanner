@@ -1,0 +1,466 @@
+{
+  "_cache_metadata": {
+    "cache_version": "1.0.0",
+    "last_updated": "2024-01-15T14:30:00Z",
+    "provider_info": {
+      "provider_name": "Alpha Vantage",
+      "provider_id": "alpha_vantage",
+      "tier_classification": "tier_1_secondary",
+      "api_function": "TIME_SERIES_INTRADAY",
+      "interval": "1min",
+      "output_format": "json"
+    },
+    "quota_management": {
+      "daily_limit": 25,
+      "requests_used_today": 12,
+      "requests_remaining": 13,
+      "quota_reset_time": "2024-01-16T00:00:00Z",
+      "last_quota_check": "2024-01-15T14:30:00Z",
+      "intelligent_cache_enabled": true,
+      "cache_hit_ratio": 0.85
+    },
+    "cache_configuration": {
+      "default_ttl_seconds": 3600,
+      "intraday_ttl_seconds": 300,
+      "intelligent_expiration": true,
+      "compression_enabled": true,
+      "max_cache_entries": 100,
+      "auto_cleanup_enabled": true,
+      "cleanup_threshold_mb": 50
+    },
+    "failover_metadata": {
+      "primary_provider": "yahoo_finance",
+      "failover_trigger_count": 0,
+      "last_failover_time": null,
+      "failover_success_rate": 1.0,
+      "cache_serving_mode": "secondary_fallback"
+    }
+  },
+  
+  "cache_entries": {
+    "AAPL_1min_20240115": {
+      "cache_key": "alpha_vantage_AAPL_intraday_1min",
+      "symbol": "AAPL",
+      "data_type": "TIME_SERIES_INTRADAY",
+      "interval": "1min",
+      "cached_at": "2024-01-15T14:30:00Z",
+      "expires_at": "2024-01-15T14:35:00Z",
+      "ttl_seconds": 300,
+      "data_quality_score": "A",
+      "request_cost": 1,
+      "alpha_vantage_response": {
+        "Meta Data": {
+          "1. Information": "Intraday (1min) open, high, low, close prices and volume",
+          "2. Symbol": "AAPL",
+          "3. Last Refreshed": "2024-01-15 14:29:00",
+          "4. Interval": "1min",
+          "5. Output Size": "Compact",
+          "6. Time Zone": "US/Eastern"
+        },
+        "Time Series (1min)": {
+          "2024-01-15 14:29:00": {
+            "1. open": "185.4200",
+            "2. high": "185.4800",
+            "3. low": "185.3500",
+            "4. close": "185.4100",
+            "5. volume": "45230"
+          },
+          "2024-01-15 14:28:00": {
+            "1. open": "185.3800",
+            "2. high": "185.4300",
+            "3. low": "185.3600",
+            "4. close": "185.4200",
+            "5. volume": "38145"
+          },
+          "2024-01-15 14:27:00": {
+            "1. open": "185.3600",
+            "2. high": "185.4000",
+            "3. low": "185.3200",
+            "4. close": "185.3800",
+            "5. volume": "42380"
+          },
+          "2024-01-15 14:26:00": {
+            "1. open": "185.3200",
+            "2. high": "185.3700",
+            "3. low": "185.2800",
+            "4. close": "185.3600",
+            "5. volume": "35920"
+          },
+          "2024-01-15 14:25:00": {
+            "1. open": "185.2800",
+            "2. high": "185.3400",
+            "3. low": "185.2500",
+            "4. close": "185.3200",
+            "5. volume": "48760"
+          }
+        }
+      },
+      "vwap_calculation": {
+        "vwap_5min": 185.3640,
+        "volume_weighted_avg": 185.3640,
+        "total_volume": 210435,
+        "calculation_timestamp": "2024-01-15T14:29:00Z"
+      }
+    },
+    
+    "MSFT_1min_20240115": {
+      "cache_key": "alpha_vantage_MSFT_intraday_1min",
+      "symbol": "MSFT",
+      "data_type": "TIME_SERIES_INTRADAY",
+      "interval": "1min",
+      "cached_at": "2024-01-15T14:25:00Z",
+      "expires_at": "2024-01-15T14:30:00Z",
+      "ttl_seconds": 300,
+      "data_quality_score": "A",
+      "request_cost": 1,
+      "alpha_vantage_response": {
+        "Meta Data": {
+          "1. Information": "Intraday (1min) open, high, low, close prices and volume",
+          "2. Symbol": "MSFT",
+          "3. Last Refreshed": "2024-01-15 14:24:00",
+          "4. Interval": "1min",
+          "5. Output Size": "Compact",
+          "6. Time Zone": "US/Eastern"
+        },
+        "Time Series (1min)": {
+          "2024-01-15 14:24:00": {
+            "1. open": "402.1500",
+            "2. high": "402.2200",
+            "3. low": "402.0800",
+            "4. close": "402.1800",
+            "5. volume": "28450"
+          },
+          "2024-01-15 14:23:00": {
+            "1. open": "402.0900",
+            "2. high": "402.1700",
+            "3. low": "402.0500",
+            "4. close": "402.1500",
+            "5. volume": "31280"
+          },
+          "2024-01-15 14:22:00": {
+            "1. open": "402.0200",
+            "2. high": "402.1200",
+            "3. low": "401.9800",
+            "4. close": "402.0900",
+            "5. volume": "26890"
+          },
+          "2024-01-15 14:21:00": {
+            "1. open": "401.9800",
+            "2. high": "402.0500",
+            "3. low": "401.9400",
+            "4. close": "402.0200",
+            "5. volume": "33120"
+          },
+          "2024-01-15 14:20:00": {
+            "1. open": "401.9200",
+            "2. high": "402.0100",
+            "3. low": "401.8900",
+            "4. close": "401.9800",
+            "5. volume": "29670"
+          }
+        }
+      },
+      "vwap_calculation": {
+        "vwap_5min": 402.1040,
+        "volume_weighted_avg": 402.1040,
+        "total_volume": 149410,
+        "calculation_timestamp": "2024-01-15T14:24:00Z"
+      }
+    },
+    
+    "TSLA_1min_20240115": {
+      "cache_key": "alpha_vantage_TSLA_intraday_1min",
+      "symbol": "TSLA",
+      "data_type": "TIME_SERIES_INTRADAY",
+      "interval": "1min",
+      "cached_at": "2024-01-15T14:20:00Z",
+      "expires_at": "2024-01-15T14:25:00Z",
+      "ttl_seconds": 300,
+      "data_quality_score": "A",
+      "request_cost": 1,
+      "alpha_vantage_response": {
+        "Meta Data": {
+          "1. Information": "Intraday (1min) open, high, low, close prices and volume",
+          "2. Symbol": "TSLA",
+          "3. Last Refreshed": "2024-01-15 14:19:00",
+          "4. Interval": "1min",
+          "5. Output Size": "Compact",
+          "6. Time Zone": "US/Eastern"
+        },
+        "Time Series (1min)": {
+          "2024-01-15 14:19:00": {
+            "1. open": "218.4500",
+            "2. high": "218.5800",
+            "3. low": "218.3200",
+            "4. close": "218.5200",
+            "5. volume": "72450"
+          },
+          "2024-01-15 14:18:00": {
+            "1. open": "218.3800",
+            "2. high": "218.4900",
+            "3. low": "218.3100",
+            "4. close": "218.4500",
+            "5. volume": "68920"
+          },
+          "2024-01-15 14:17:00": {
+            "1. open": "218.2900",
+            "2. high": "218.4200",
+            "3. low": "218.2400",
+            "4. close": "218.3800",
+            "5. volume": "81340"
+          },
+          "2024-01-15 14:16:00": {
+            "1. open": "218.1800",
+            "2. high": "218.3300",
+            "3. low": "218.1500",
+            "4. close": "218.2900",
+            "5. volume": "75680"
+          },
+          "2024-01-15 14:15:00": {
+            "1. open": "218.0500",
+            "2. high": "218.2200",
+            "3. low": "218.0200",
+            "4. close": "218.1800",
+            "5. volume": "89230"
+          }
+        }
+      },
+      "vwap_calculation": {
+        "vwap_5min": 218.3640,
+        "volume_weighted_avg": 218.3640,
+        "total_volume": 387620,
+        "calculation_timestamp": "2024-01-15T14:19:00Z"
+      }
+    },
+    
+    "NVDA_1min_20240115": {
+      "cache_key": "alpha_vantage_NVDA_intraday_1min",
+      "symbol": "NVDA",
+      "data_type": "TIME_SERIES_INTRADAY",
+      "interval": "1min",
+      "cached_at": "2024-01-15T14:15:00Z",
+      "expires_at": "2024-01-15T14:20:00Z",
+      "ttl_seconds": 300,
+      "data_quality_score": "A",
+      "request_cost": 1,
+      "alpha_vantage_response": {
+        "Meta Data": {
+          "1. Information": "Intraday (1min) open, high, low, close prices and volume",
+          "2. Symbol": "NVDA",
+          "3. Last Refreshed": "2024-01-15 14:14:00",
+          "4. Interval": "1min",
+          "5. Output Size": "Compact",
+          "6. Time Zone": "US/Eastern"
+        },
+        "Time Series (1min)": {
+          "2024-01-15 14:14:00": {
+            "1. open": "588.2200",
+            "2. high": "588.4500",
+            "3. low": "588.0800",
+            "4. close": "588.3800",
+            "5. volume": "15680"
+          },
+          "2024-01-15 14:13:00": {
+            "1. open": "588.1500",
+            "2. high": "588.2800",
+            "3. low": "588.0200",
+            "4. close": "588.2200",
+            "5. volume": "18920"
+          },
+          "2024-01-15 14:12:00": {
+            "1. open": "588.0800",
+            "2. high": "588.1900",
+            "3. low": "587.9500",
+            "4. close": "588.1500",
+            "5. volume": "21340"
+          },
+          "2024-01-15 14:11:00": {
+            "1. open": "587.9200",
+            "2. high": "588.1200",
+            "3. low": "587.8800",
+            "4. close": "588.0800",
+            "5. volume": "19750"
+          },
+          "2024-01-15 14:10:00": {
+            "1. open": "587.8500",
+            "2. high": "587.9800",
+            "3. low": "587.7900",
+            "4. close": "587.9200",
+            "5. volume": "22830"
+          }
+        }
+      },
+      "vwap_calculation": {
+        "vwap_5min": 588.1480,
+        "volume_weighted_avg": 588.1480,
+        "total_volume": 98520,
+        "calculation_timestamp": "2024-01-15T14:14:00Z"
+      }
+    },
+    
+    "GOOGL_1min_20240115": {
+      "cache_key": "alpha_vantage_GOOGL_intraday_1min",
+      "symbol": "GOOGL",
+      "data_type": "TIME_SERIES_INTRADAY",
+      "interval": "1min",
+      "cached_at": "2024-01-15T14:10:00Z",
+      "expires_at": "2024-01-15T14:15:00Z",
+      "ttl_seconds": 300,
+      "data_quality_score": "A",
+      "request_cost": 1,
+      "alpha_vantage_response": {
+        "Meta Data": {
+          "1. Information": "Intraday (1min) open, high, low, close prices and volume",
+          "2. Symbol": "GOOGL",
+          "3. Last Refreshed": "2024-01-15 14:09:00",
+          "4. Interval": "1min",
+          "5. Output Size": "Compact",
+          "6. Time Zone": "US/Eastern"
+        },
+        "Time Series (1min)": {
+          "2024-01-15 14:09:00": {
+            "1. open": "147.8200",
+            "2. high": "147.8900",
+            "3. low": "147.7500",
+            "4. close": "147.8600",
+            "5. volume": "12450"
+          },
+          "2024-01-15 14:08:00": {
+            "1. open": "147.7800",
+            "2. high": "147.8400",
+            "3. low": "147.7300",
+            "4. close": "147.8200",
+            "5. volume": "14280"
+          },
+          "2024-01-15 14:07:00": {
+            "1. open": "147.7200",
+            "2. high": "147.8000",
+            "3. low": "147.6900",
+            "4. close": "147.7800",
+            "5. volume": "16890"
+          },
+          "2024-01-15 14:06:00": {
+            "1. open": "147.6800",
+            "2. high": "147.7500",
+            "3. low": "147.6400",
+            "4. close": "147.7200",
+            "5. volume": "13670"
+          },
+          "2024-01-15 14:05:00": {
+            "1. open": "147.6200",
+            "2. high": "147.7100",
+            "3. low": "147.5900",
+            "4. close": "147.6800",
+            "5. volume": "18230"
+          }
+        }
+      },
+      "vwap_calculation": {
+        "vwap_5min": 147.7720,
+        "volume_weighted_avg": 147.7720,
+        "total_volume": 75520,
+        "calculation_timestamp": "2024-01-15T14:09:00Z"
+      }
+    }
+  },
+  
+  "quota_tracking": {
+    "daily_usage": {
+      "date": "2024-01-15",
+      "requests_made": 12,
+      "requests_successful": 12,
+      "requests_failed": 0,
+      "cache_hits": 18,
+      "cache_misses": 12,
+      "quota_efficiency": 0.60
+    },
+    "rate_limiting": {
+      "requests_per_minute": 5,
+      "current_minute_usage": 1,
+      "last_request_time": "2024-01-15T14:30:00Z",
+      "next_available_time": "2024-01-15T14:30:12Z",
+      "cooldown_period_seconds": 12,
+      "rate_limit_compliance": true
+    },
+    "api_key_rotation": {
+      "current_key_index": 0,
+      "total_keys_available": 1,
+      "last_rotation": null,
+      "rotation_needed": false,
+      "rotation_strategy": "quota_exhaustion_trigger"
+    }
+  },
+  
+  "performance_metrics": {
+    "cache_performance": {
+      "hit_ratio": 0.85,
+      "miss_ratio": 0.15,
+      "average_response_time_ms": 45,
+      "cache_size_mb": 2.8,
+      "compression_ratio": 0.65
+    },
+    "provider_performance": {
+      "success_rate": 1.00,
+      "average_api_response_time_ms": 1250,
+      "error_rate": 0.00,
+      "data_quality_score": "A",
+      "circuit_breaker_state": "CLOSED"
+    },
+    "failover_statistics": {
+      "total_failover_events": 0,
+      "failover_success_rate": 1.0,
+      "cache_served_requests": 0,
+      "primary_provider_availability": 0.98
+    }
+  },
+  
+  "cache_maintenance": {
+    "last_cleanup": "2024-01-15T13:00:00Z",
+    "next_cleanup": "2024-01-15T14:00:00Z",
+    "cleanup_interval_minutes": 60,
+    "expired_entries_removed": 3,
+    "total_cache_entries": 5,
+    "cache_size_limit_mb": 50,
+    "auto_cleanup_enabled": true
+  },
+  
+  "intelligent_caching": {
+    "prediction_algorithms": {
+      "market_hours_aware": true,
+      "volume_based_ttl": true,
+      "volatility_adjusted_refresh": true,
+      "premarket_optimization": true
+    },
+    "optimization_strategies": {
+      "prefetch_popular_symbols": ["AAPL", "MSFT", "TSLA", "NVDA", "GOOGL"],
+      "dynamic_ttl_calculation": true,
+      "request_batching": false,
+      "compression_enabled": true
+    },
+    "machine_learning_features": {
+      "usage_pattern_analysis": true,
+      "optimal_refresh_timing": true,
+      "predictive_cache_warming": false,
+      "adaptive_quota_management": true
+    }
+  },
+  
+  "integration_metadata": {
+    "data_integration_version": "1.0.0",
+    "compatible_formats": ["pandas_dataframe", "json", "csv"],
+    "supported_intervals": ["1min", "5min", "15min", "30min", "60min"],
+    "vwap_calculation_enabled": true,
+    "technical_indicators_support": true,
+    "real_time_updates": true,
+    "batch_processing": false
+  },
+  
+  "compliance_and_security": {
+    "data_encryption": "AES-256-GCM",
+    "api_key_protection": "DPAPI_ENCRYPTED",
+    "audit_logging": true,
+    "gdpr_compliance": true,
+    "data_retention_policy": "24_hours_rolling",
+    "secure_deletion": true
+  }
+}

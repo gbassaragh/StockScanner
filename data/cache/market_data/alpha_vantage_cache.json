@@ -1,0 +1,293 @@
+{
+  "_cache_metadata": {
+    "cache_version": "1.0.0",
+    "cache_purpose": "Secondary provider cache for Alpha Vantage API responses with CSV/JSON format support and extended historical data retention",
+    "managed_by": "Multi-Source Data Integration Engine (src/core/data_integration.py)",
+    "compliance_note": "Implements Section 6.3.2.1 Multi-Source Data Integration with failover cache management",
+    "cache_type": "secondary_provider_fallback",
+    "provider_id": "alpha_vantage",
+    "last_initialized": "2024-01-15T10:30:00Z",
+    "schema_compliance": "technical_specification_6.3.2.1",
+    "cache_status": "ACTIVE"
+  },
+  
+  "_rate_limit_management": {
+    "tier_configuration": {
+      "free_tier": {
+        "max_requests_per_minute": 5,
+        "max_requests_per_day": 25,
+        "quota_reset_time": "00:00:00 UTC",
+        "current_tier": true,
+        "tier_status": "ACTIVE"
+      },
+      "standard_tier": {
+        "max_requests_per_minute": 75,
+        "max_requests_per_day": 500,
+        "monthly_cost": 49.99,
+        "current_tier": false,
+        "tier_status": "AVAILABLE"
+      },
+      "premium_tier": {
+        "max_requests_per_minute": 1200,
+        "max_requests_per_day": 75000,
+        "monthly_cost": 149.99,
+        "current_tier": false,
+        "tier_status": "AVAILABLE"
+      }
+    },
+    "current_usage": {
+      "requests_today": 0,
+      "requests_this_minute": 0,
+      "last_request_time": null,
+      "quota_remaining": 25,
+      "reset_timestamp": "2024-01-16T00:00:00Z",
+      "usage_tracking_enabled": true
+    },
+    "rate_limit_compliance": {
+      "intelligent_spacing_enabled": true,
+      "minimum_request_interval_seconds": 12,
+      "burst_protection_enabled": true,
+      "queue_management_enabled": true,
+      "priority_queue_size": 10,
+      "overflow_handling": "cache_fallback"
+    }
+  },
+  
+  "_cache_configuration": {
+    "storage_strategy": {
+      "primary_format": "normalized_json",
+      "secondary_format": "csv_compatible",
+      "compression_enabled": true,
+      "compression_algorithm": "gzip",
+      "max_cache_size_mb": 500,
+      "cache_cleanup_enabled": true
+    },
+    "ttl_management": {
+      "default_ttl_seconds": 3600,
+      "quote_data_ttl_seconds": 300,
+      "historical_data_ttl_seconds": 86400,
+      "fundamental_data_ttl_seconds": 604800,
+      "extended_retention_enabled": true,
+      "retention_policy": "historical_data_priority"
+    },
+    "data_format_support": {
+      "csv_normalization": true,
+      "json_standardization": true,
+      "pandas_dataframe_compatible": true,
+      "cross_provider_normalization": true,
+      "format_conversion_enabled": true
+    },
+    "failover_cache_management": {
+      "failover_trigger_conditions": [
+        "primary_provider_failure",
+        "secondary_provider_failure", 
+        "rate_limit_exhaustion",
+        "network_connectivity_issues",
+        "circuit_breaker_open"
+      ],
+      "failover_data_priority": "most_recent_cached",
+      "stale_data_threshold_hours": 24,
+      "emergency_cache_extension_hours": 72,
+      "failover_notification_enabled": true
+    }
+  },
+  
+  "_data_quality_management": {
+    "validation_rules": {
+      "required_fields": ["symbol", "timestamp", "price", "volume"],
+      "data_type_validation": true,
+      "range_validation_enabled": true,
+      "outlier_detection_enabled": true,
+      "completeness_threshold_percent": 90
+    },
+    "normalization_settings": {
+      "csv_to_json_conversion": true,
+      "timestamp_standardization": "ISO_8601",
+      "price_precision_decimal_places": 4,
+      "volume_integer_validation": true,
+      "symbol_case_normalization": "uppercase"
+    },
+    "integrity_verification": {
+      "checksum_validation": true,
+      "data_corruption_detection": true,
+      "automatic_repair_enabled": true,
+      "backup_validation_enabled": true
+    }
+  },
+  
+  "cache_entries": {
+    "_entry_structure_documentation": {
+      "description": "Each cache entry contains normalized market data from Alpha Vantage API with metadata for TTL management and failover scenarios",
+      "entry_format": "standardized_json_with_csv_compatibility",
+      "data_normalization": "cross_provider_compatible_format",
+      "timestamp_format": "ISO_8601_UTC",
+      "retention_strategy": "extended_historical_priority"
+    }
+  },
+  
+  "quote_data_cache": {
+    "_cache_section_info": {
+      "purpose": "Real-time and delayed quote data cache with 5-minute TTL for active trading sessions",
+      "ttl_seconds": 300,
+      "max_entries": 1000,
+      "cleanup_threshold": 800,
+      "data_format": "normalized_json"
+    }
+  },
+  
+  "historical_data_cache": {
+    "_cache_section_info": {
+      "purpose": "Extended historical data cache leveraging Alpha Vantage's comprehensive historical coverage with 24-hour TTL",
+      "ttl_seconds": 86400,
+      "max_entries": 500,
+      "cleanup_threshold": 400,
+      "data_format": "csv_json_hybrid",
+      "extended_retention_years": 20,
+      "historical_data_priority": "alpha_vantage_strength"
+    }
+  },
+  
+  "intraday_data_cache": {
+    "_cache_section_info": {
+      "purpose": "Intraday interval data cache with configurable intervals and extended retention for pattern analysis",
+      "ttl_seconds": 1800,
+      "max_entries": 200,
+      "cleanup_threshold": 150,
+      "supported_intervals": ["1min", "5min", "15min", "30min", "60min"],
+      "data_format": "time_series_optimized"
+    }
+  },
+  
+  "fundamental_data_cache": {
+    "_cache_section_info": {
+      "purpose": "Company fundamental data cache with weekly TTL for Alpha Vantage's comprehensive fundamental coverage",
+      "ttl_seconds": 604800,
+      "max_entries": 100,
+      "cleanup_threshold": 80,
+      "data_format": "structured_fundamental_json",
+      "fundamental_data_strength": "alpha_vantage_comprehensive"
+    }
+  },
+  
+  "_performance_metrics": {
+    "cache_statistics": {
+      "total_entries": 0,
+      "cache_hit_rate_percent": 0.0,
+      "cache_miss_rate_percent": 0.0,
+      "avg_response_time_ms": 0.0,
+      "total_api_calls_saved": 0,
+      "data_freshness_score": 100.0,
+      "cache_efficiency_rating": "OPTIMAL"
+    },
+    "failover_statistics": {
+      "failover_activations": 0,
+      "primary_provider_failures": 0,
+      "secondary_provider_failures": 0,
+      "cache_fallback_successes": 0,
+      "stale_data_served_count": 0,
+      "avg_failover_response_time_ms": 0.0
+    },
+    "rate_limit_compliance": {
+      "quota_violations": 0,
+      "intelligent_spacing_activations": 0,
+      "request_queue_overflows": 0,
+      "rate_limit_efficiency_percent": 100.0,
+      "cost_optimization_score": 100.0
+    }
+  },
+  
+  "_integration_interfaces": {
+    "data_integration_layer": {
+      "connection_point": "src/core/data_integration.py:AlphaVantageProvider",
+      "cache_access_method": "json_file_based",
+      "update_mechanism": "atomic_write_with_backup",
+      "read_mechanism": "mmap_optimized_read",
+      "threading_safety": "file_lock_protected"
+    },
+    "scanner_engine_integration": {
+      "connection_point": "Premarket Scanner Engine Component",
+      "data_consumption": "normalized_market_data",
+      "failover_trigger": "primary_secondary_provider_failure",
+      "cache_priority": "most_recent_available",
+      "performance_requirement": "sub_second_response"
+    },
+    "alert_manager_integration": {
+      "connection_point": "Alert Manager Component background monitoring",
+      "alert_conditions": "cache_staleness_warnings",
+      "notification_triggers": ["cache_corruption", "quota_exhaustion", "failover_activation"],
+      "monitoring_frequency": "continuous_background"
+    }
+  },
+  
+  "_backup_and_recovery": {
+    "backup_strategy": {
+      "automatic_backup_enabled": true,
+      "backup_frequency": "daily",
+      "backup_retention_days": 30,
+      "backup_compression": true,
+      "backup_integrity_validation": true
+    },
+    "recovery_procedures": {
+      "corruption_detection": "automatic_checksum_validation",
+      "recovery_source": "latest_valid_backup",
+      "recovery_notification": "alert_manager_integration",
+      "rollback_capability": "point_in_time_recovery",
+      "data_loss_tolerance": "maximum_24_hours"
+    },
+    "disaster_recovery": {
+      "cache_rebuild_capability": true,
+      "rebuild_data_sources": ["primary_providers", "secondary_providers"],
+      "rebuild_prioritization": "critical_securities_first",
+      "rebuild_rate_limit_respect": true,
+      "emergency_mode_enabled": true
+    }
+  },
+  
+  "_compliance_and_security": {
+    "data_protection": {
+      "encryption_at_rest": false,
+      "access_control": "application_level",
+      "audit_logging": true,
+      "data_retention_compliance": "user_configurable",
+      "privacy_protection": "local_storage_only"
+    },
+    "regulatory_compliance": {
+      "market_data_terms_compliance": true,
+      "attribution_requirements": "alpha_vantage_attribution",
+      "usage_restrictions": "non_commercial_personal_trading",
+      "redistribution_prohibited": true,
+      "compliance_monitoring": "automated"
+    },
+    "operational_security": {
+      "file_integrity_monitoring": true,
+      "access_logging": true,
+      "unauthorized_modification_detection": true,
+      "security_event_alerting": true,
+      "secure_deletion_on_cleanup": true
+    }
+  },
+  
+  "_maintenance_procedures": {
+    "automated_maintenance": {
+      "cache_cleanup_schedule": "daily_at_midnight",
+      "expired_entry_removal": true,
+      "size_based_cleanup": true,
+      "performance_optimization": true,
+      "index_rebuilding": "weekly"
+    },
+    "manual_maintenance": {
+      "cache_reset_capability": true,
+      "selective_entry_removal": true,
+      "cache_statistics_reset": true,
+      "performance_tuning_interface": true,
+      "backup_restoration": true
+    },
+    "monitoring_and_alerting": {
+      "cache_health_monitoring": true,
+      "performance_degradation_alerts": true,
+      "storage_capacity_alerts": true,
+      "data_quality_alerts": true,
+      "maintenance_notifications": true
+    }
+  }
+}
