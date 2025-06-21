@@ -1,0 +1,260 @@
+{
+  "_metadata": {
+    "cache_version": "1.0.0",
+    "provider": "yahoo_finance",
+    "description": "TTL-managed cache for Yahoo Finance API responses with 24-hour retention policy supporting concurrent scanner operations for 500+ securities",
+    "created_at": "2024-01-15T10:30:00.000Z",
+    "last_cleanup": "2024-01-15T10:30:00.000Z",
+    "last_modified": "2024-01-15T10:30:00.000Z",
+    "cache_statistics": {
+      "total_entries": 0,
+      "active_entries": 0,
+      "expired_entries": 0,
+      "hit_rate": 0.0,
+      "miss_rate": 0.0,
+      "total_requests": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "bytes_stored": 0,
+      "compression_ratio": 1.0
+    },
+    "retention_policy": {
+      "default_ttl_seconds": 86400,
+      "quote_ttl_seconds": 300,
+      "historical_ttl_seconds": 3600,
+      "intraday_ttl_seconds": 1800,
+      "max_retention_days": 30,
+      "cleanup_interval_seconds": 300,
+      "auto_cleanup_enabled": true,
+      "cache_warming_enabled": true,
+      "max_cache_size_mb": 500
+    },
+    "performance_metrics": {
+      "average_retrieval_time_ms": 0.0,
+      "max_concurrent_requests": 500,
+      "batch_size_limit": 20,
+      "request_batching_enabled": true,
+      "compression_enabled": false,
+      "cache_warming_symbols": [],
+      "warmup_interval_seconds": 1800,
+      "sub_second_optimization": true
+    },
+    "yfinance_config": {
+      "library_version": "0.2.28",
+      "rate_limit_requests_per_minute": 60,
+      "max_symbols_per_batch": 20,
+      "timeout_seconds": 10,
+      "retry_attempts": 3,
+      "backoff_factor": 1.5,
+      "supported_intervals": ["1m", "2m", "5m", "15m", "30m", "60m", "90m", "1h", "1d", "5d", "1wk", "1mo", "3mo"],
+      "supported_periods": ["1d", "5d", "1mo", "3mo", "6mo", "1y", "2y", "5y", "10y", "ytd", "max"]
+    }
+  },
+  "_cache_index": {
+    "by_symbol": {},
+    "by_data_type": {
+      "quote": [],
+      "historical": [],
+      "intraday": []
+    },
+    "by_expiry": {},
+    "by_creation_time": {},
+    "by_batch_id": {},
+    "frequently_accessed": []
+  },
+  "_cache_health": {
+    "total_memory_usage_bytes": 0,
+    "fragmentation_ratio": 0.0,
+    "avg_access_time_ms": 0.0,
+    "cache_efficiency_score": 100.0,
+    "last_defrag": null,
+    "optimization_needed": false
+  },
+  "_batch_operations": {
+    "active_batches": {},
+    "completed_batches": {},
+    "batch_statistics": {
+      "total_batches_processed": 0,
+      "average_batch_time_ms": 0.0,
+      "successful_batches": 0,
+      "failed_batches": 0
+    }
+  },
+  "_scanner_integration": {
+    "premarket_cache_keys": [],
+    "ranking_data_cache": {},
+    "filtered_results_cache": {},
+    "scanner_refresh_timestamp": null,
+    "concurrent_scanner_support": true,
+    "max_scanner_symbols": 500
+  },
+  "_expired_entries": [],
+  "entries": {
+    "_example_quote_entry": {
+      "_note": "This is an example structure for quote data cache entries - actual entries use MD5 hash keys",
+      "cache_key": "a1b2c3d4e5f6789012345678901234ab",
+      "data_type": "quote",
+      "symbols": ["AAPL"],
+      "provider": "yahoo_finance",
+      "success": true,
+      "cached": false,
+      "created_at": "2024-01-15T14:30:15.123Z",
+      "expires_at": "2024-01-15T14:35:15.123Z",
+      "last_accessed": "2024-01-15T14:30:15.123Z",
+      "access_count": 1,
+      "ttl_seconds": 300,
+      "response_time_ms": 1247.5,
+      "data": {
+        "AAPL": {
+          "symbol": "AAPL",
+          "regularMarketPrice": 185.64,
+          "regularMarketVolume": 89236547,
+          "marketCap": 2847891456000,
+          "regularMarketOpen": 184.35,
+          "regularMarketHigh": 186.95,
+          "regularMarketLow": 183.82,
+          "regularMarketPreviousClose": 183.25,
+          "regularMarketChangePercent": 1.304,
+          "averageVolume": 65847239,
+          "fiftyTwoWeekLow": 164.08,
+          "fiftyTwoWeekHigh": 199.62,
+          "timestamp": "2024-01-15T14:30:15.123Z",
+          "vwap": 185.23,
+          "float_shares": 15441976000,
+          "sector": "Technology"
+        }
+      },
+      "request_metadata": {
+        "batch_id": "batch_001_20240115_143015",
+        "user_agent": "yfinance/0.2.28",
+        "api_endpoint": "https://query1.finance.yahoo.com/v8/finance/chart",
+        "request_size_bytes": 256,
+        "response_size_bytes": 1847
+      }
+    },
+    "_example_historical_entry": {
+      "_note": "This is an example structure for historical data cache entries - actual entries use MD5 hash keys",
+      "cache_key": "b2c3d4e5f6789012345678901234abcd",
+      "data_type": "historical",
+      "symbols": ["MSFT"],
+      "provider": "yahoo_finance",
+      "success": true,
+      "cached": false,
+      "created_at": "2024-01-15T14:30:15.123Z",
+      "expires_at": "2024-01-15T15:30:15.123Z",
+      "last_accessed": "2024-01-15T14:30:15.123Z",
+      "access_count": 1,
+      "ttl_seconds": 3600,
+      "response_time_ms": 2156.8,
+      "timeframe": "1d",
+      "start_date": "2024-01-10T00:00:00.000Z",
+      "end_date": "2024-01-15T23:59:59.999Z",
+      "data": {
+        "MSFT": [
+          {
+            "Date": "2024-01-10",
+            "Open": 367.89,
+            "High": 372.45,
+            "Low": 366.12,
+            "Close": 371.58,
+            "Volume": 24567890,
+            "Adj Close": 371.58,
+            "symbol": "MSFT",
+            "vwap": 369.78
+          },
+          {
+            "Date": "2024-01-11",
+            "Open": 372.10,
+            "High": 375.23,
+            "Low": 370.45,
+            "Close": 374.12,
+            "Volume": 28456721,
+            "Adj Close": 374.12,
+            "symbol": "MSFT",
+            "vwap": 372.95
+          }
+        ]
+      },
+      "request_metadata": {
+        "batch_id": "batch_002_20240115_143015",
+        "user_agent": "yfinance/0.2.28",
+        "api_endpoint": "https://query1.finance.yahoo.com/v8/finance/chart",
+        "request_size_bytes": 384,
+        "response_size_bytes": 3247
+      }
+    },
+    "_example_batch_entry": {
+      "_note": "This is an example structure for batch request cache entries supporting concurrent processing of 500+ securities",
+      "cache_key": "c3d4e5f6789012345678901234abcdef",
+      "data_type": "quote",
+      "symbols": ["GOOGL", "AMZN", "TSLA", "META", "NVDA"],
+      "provider": "yahoo_finance",
+      "success": true,
+      "cached": false,
+      "created_at": "2024-01-15T14:30:15.123Z",
+      "expires_at": "2024-01-15T14:35:15.123Z",
+      "last_accessed": "2024-01-15T14:30:15.123Z",
+      "access_count": 1,
+      "ttl_seconds": 300,
+      "response_time_ms": 1685.3,
+      "batch_processing": {
+        "batch_size": 5,
+        "concurrent_requests": true,
+        "batch_optimization": true,
+        "symbols_per_request": 5
+      },
+      "data": {
+        "GOOGL": {
+          "symbol": "GOOGL",
+          "regularMarketPrice": 142.67,
+          "regularMarketVolume": 25847369,
+          "marketCap": 1789234567890,
+          "timestamp": "2024-01-15T14:30:15.123Z",
+          "vwap": 142.35
+        },
+        "AMZN": {
+          "symbol": "AMZN",
+          "regularMarketPrice": 155.89,
+          "regularMarketVolume": 34567812,
+          "marketCap": 1623456789012,
+          "timestamp": "2024-01-15T14:30:15.123Z",
+          "vwap": 155.42
+        },
+        "TSLA": {
+          "symbol": "TSLA",
+          "regularMarketPrice": 248.73,
+          "regularMarketVolume": 97654321,
+          "marketCap": 789123456789,
+          "timestamp": "2024-01-15T14:30:15.123Z",
+          "vwap": 247.91
+        },
+        "META": {
+          "symbol": "META",
+          "regularMarketPrice": 345.12,
+          "regularMarketVolume": 18765432,
+          "marketCap": 912345678901,
+          "timestamp": "2024-01-15T14:30:15.123Z",
+          "vwap": 344.78
+        },
+        "NVDA": {
+          "symbol": "NVDA",
+          "regularMarketPrice": 598.45,
+          "regularMarketVolume": 42135678,
+          "marketCap": 1456789012345,
+          "timestamp": "2024-01-15T14:30:15.123Z",
+          "vwap": 597.23
+        }
+      },
+      "request_metadata": {
+        "batch_id": "batch_003_20240115_143015",
+        "user_agent": "yfinance/0.2.28",
+        "api_endpoint": "https://query1.finance.yahoo.com/v8/finance/chart",
+        "request_size_bytes": 512,
+        "response_size_bytes": 4892,
+        "concurrent_processing": true,
+        "scanner_integration": true
+      }
+    }
+  }
+}
+}
