@@ -1,0 +1,444 @@
+{
+  "_schema_version": "1.0.0",
+  "_encryption_info": {
+    "method": "DPAPI_ENVELOPE",
+    "description": "API credentials encrypted using Windows Data Protection API with envelope encryption architecture",
+    "key_derivation": "Windows DPAPI machine-specific master keys with Python cryptography library data key encryption",
+    "cipher_algorithm": "AES-256-GCM",
+    "last_encryption_update": "2024-01-15T10:30:00Z",
+    "encryption_status": "ACTIVE"
+  },
+  "_metadata": {
+    "config_purpose": "Multi-provider API credential storage for desktop trading platform data integration",
+    "managed_by": "Settings Tab UI (src/gui/settings_tab.py) and Data Integration Layer (src/core/data_integration.py)",
+    "compliance_note": "Encrypted credential storage supporting Section 6.4.3.2 envelope encryption requirements",
+    "last_modified": "2024-01-15T10:30:00Z",
+    "modification_source": "initial_configuration",
+    "validation_checksum": "sha256:a1b2c3d4e5f6789..."
+  },
+  
+  "providers": {
+    "yahoo_finance": {
+      "provider_metadata": {
+        "provider_name": "Yahoo Finance",
+        "provider_id": "yahoo_finance",
+        "provider_type": "free_tier_primary",
+        "authentication_required": false,
+        "tier_classification": "tier_1_primary",
+        "last_updated": "2024-01-15T10:30:00Z",
+        "last_validation": "2024-01-15T10:25:00Z",
+        "validation_status": "ACTIVE"
+      },
+      "authentication": {
+        "api_key_required": false,
+        "api_key_encrypted": null,
+        "api_secret_encrypted": null,
+        "token_type": "none",
+        "authentication_method": "public_access"
+      },
+      "connection_config": {
+        "base_weight": 40,
+        "max_requests_per_minute": 60,
+        "max_requests_per_hour": 2000,
+        "timeout_seconds": 10,
+        "connection_pool_size": 10,
+        "connection_pool_ttl": 300,
+        "retry_attempts": 3,
+        "retry_backoff_factor": 2.0,
+        "circuit_breaker_threshold": 5,
+        "circuit_breaker_timeout": 60,
+        "enabled": true
+      },
+      "rate_limiting": {
+        "requests_per_second": 1.0,
+        "requests_per_minute": 60,
+        "requests_per_hour": 2000,
+        "burst_allowance": 10,
+        "rate_limit_strategy": "intelligent_spacing",
+        "cooldown_period": 1.0,
+        "rate_limit_enforcement": "client_side"
+      },
+      "endpoints": {
+        "quote_endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/",
+        "historical_endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/",
+        "search_endpoint": "https://query1.finance.yahoo.com/v1/finance/search",
+        "batch_endpoint": "https://query1.finance.yahoo.com/v7/finance/quote"
+      },
+      "capabilities": {
+        "real_time_quotes": true,
+        "historical_data": true,
+        "intraday_data": true,
+        "fundamental_data": true,
+        "batch_requests": true,
+        "max_symbols_per_batch": 20,
+        "max_historical_years": 10,
+        "data_delay_minutes": 15
+      }
+    },
+    
+    "alpha_vantage": {
+      "provider_metadata": {
+        "provider_name": "Alpha Vantage",
+        "provider_id": "alpha_vantage",
+        "provider_type": "freemium_secondary",
+        "authentication_required": true,
+        "tier_classification": "tier_1_secondary",
+        "last_updated": "2024-01-15T10:30:00Z",
+        "last_validation": "2024-01-15T10:25:00Z",
+        "validation_status": "PENDING_CREDENTIALS"
+      },
+      "authentication": {
+        "api_key_required": true,
+        "api_key_encrypted": "DPAPI_ENCRYPTED_PLACEHOLDER_REPLACE_WITH_REAL_ENCRYPTED_KEY",
+        "api_secret_encrypted": null,
+        "token_type": "api_key",
+        "authentication_method": "query_parameter",
+        "key_parameter_name": "apikey",
+        "rotation_enabled": true,
+        "rotation_metadata": {
+          "current_key_index": 0,
+          "total_keys_configured": 1,
+          "last_rotation": null,
+          "next_rotation_due": null,
+          "rotation_interval_days": 90,
+          "auto_rotation_enabled": false
+        }
+      },
+      "connection_config": {
+        "base_weight": 20,
+        "max_requests_per_minute": 5,
+        "max_requests_per_hour": 25,
+        "max_requests_per_day": 25,
+        "timeout_seconds": 15,
+        "connection_pool_size": 2,
+        "connection_pool_ttl": 600,
+        "retry_attempts": 2,
+        "retry_backoff_factor": 3.0,
+        "circuit_breaker_threshold": 2,
+        "circuit_breaker_timeout": 120,
+        "enabled": true
+      },
+      "rate_limiting": {
+        "requests_per_second": 0.083,
+        "requests_per_minute": 5,
+        "requests_per_hour": 25,
+        "requests_per_day": 25,
+        "burst_allowance": 1,
+        "rate_limit_strategy": "strict_quota_management",
+        "cooldown_period": 12.0,
+        "rate_limit_enforcement": "strict_client_side",
+        "quota_reset_time": "00:00:00 UTC"
+      },
+      "endpoints": {
+        "quote_endpoint": "https://www.alphavantage.co/query?function=GLOBAL_QUOTE",
+        "historical_endpoint": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY",
+        "intraday_endpoint": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY",
+        "fundamental_endpoint": "https://www.alphavantage.co/query?function=OVERVIEW"
+      },
+      "capabilities": {
+        "real_time_quotes": true,
+        "historical_data": true,
+        "intraday_data": true,
+        "fundamental_data": true,
+        "batch_requests": false,
+        "max_symbols_per_batch": 1,
+        "max_historical_years": 20,
+        "data_delay_minutes": 0,
+        "intraday_intervals": ["1min", "5min", "15min", "30min", "60min"]
+      }
+    },
+    
+    "iex_cloud": {
+      "provider_metadata": {
+        "provider_name": "IEX Cloud",
+        "provider_id": "iex_cloud",
+        "provider_type": "premium_professional",
+        "authentication_required": true,
+        "tier_classification": "tier_2_premium",
+        "last_updated": "2024-01-15T10:30:00Z",
+        "last_validation": "2024-01-15T10:25:00Z",
+        "validation_status": "PENDING_CREDENTIALS"
+      },
+      "authentication": {
+        "api_key_required": true,
+        "api_key_encrypted": "DPAPI_ENCRYPTED_PLACEHOLDER_REPLACE_WITH_REAL_ENCRYPTED_KEY",
+        "api_secret_encrypted": null,
+        "token_type": "publishable_token",
+        "authentication_method": "query_parameter",
+        "key_parameter_name": "token",
+        "rotation_enabled": true,
+        "rotation_metadata": {
+          "current_key_index": 0,
+          "total_keys_configured": 1,
+          "last_rotation": null,
+          "next_rotation_due": null,
+          "rotation_interval_days": 30,
+          "auto_rotation_enabled": true
+        }
+      },
+      "connection_config": {
+        "base_weight": 30,
+        "max_requests_per_minute": 100,
+        "max_requests_per_hour": 6000,
+        "timeout_seconds": 5,
+        "connection_pool_size": 20,
+        "connection_pool_ttl": 300,
+        "retry_attempts": 3,
+        "retry_backoff_factor": 1.5,
+        "circuit_breaker_threshold": 3,
+        "circuit_breaker_timeout": 30,
+        "enabled": true
+      },
+      "rate_limiting": {
+        "requests_per_second": 1.67,
+        "requests_per_minute": 100,
+        "requests_per_hour": 6000,
+        "burst_allowance": 50,
+        "rate_limit_strategy": "professional_tier_management",
+        "cooldown_period": 0.6,
+        "rate_limit_enforcement": "provider_managed",
+        "credits_per_request": 1,
+        "monthly_credit_limit": 500000
+      },
+      "endpoints": {
+        "quote_endpoint": "https://cloud.iexapis.com/stable/stock/{symbol}/quote",
+        "historical_endpoint": "https://cloud.iexapis.com/stable/stock/{symbol}/chart",
+        "batch_endpoint": "https://cloud.iexapis.com/stable/stock/market/batch",
+        "company_endpoint": "https://cloud.iexapis.com/stable/stock/{symbol}/company",
+        "websocket_endpoint": "wss://ws-api.iextrading.com/1.0/deep"
+      },
+      "capabilities": {
+        "real_time_quotes": true,
+        "historical_data": true,
+        "intraday_data": true,
+        "fundamental_data": true,
+        "batch_requests": true,
+        "websocket_streaming": true,
+        "max_symbols_per_batch": 100,
+        "max_historical_years": 15,
+        "data_delay_minutes": 0,
+        "premium_features": ["real_time_streaming", "level_2_data", "options_data"]
+      }
+    },
+    
+    "polygon_io": {
+      "provider_metadata": {
+        "provider_name": "Polygon.io",
+        "provider_id": "polygon_io",
+        "provider_type": "enterprise_future",
+        "authentication_required": true,
+        "tier_classification": "tier_2_enterprise",
+        "last_updated": "2024-01-15T10:30:00Z",
+        "last_validation": "2024-01-15T10:25:00Z",
+        "validation_status": "RESERVED_FUTURE_USE",
+        "implementation_note": "Reserved for future enterprise integration based on user demand and budget allocation"
+      },
+      "authentication": {
+        "api_key_required": true,
+        "api_key_encrypted": null,
+        "api_secret_encrypted": null,
+        "token_type": "api_key",
+        "authentication_method": "header_authorization",
+        "key_parameter_name": "Authorization",
+        "rotation_enabled": true,
+        "rotation_metadata": {
+          "current_key_index": 0,
+          "total_keys_configured": 0,
+          "last_rotation": null,
+          "next_rotation_due": null,
+          "rotation_interval_days": 30,
+          "auto_rotation_enabled": false
+        }
+      },
+      "connection_config": {
+        "base_weight": 50,
+        "max_requests_per_minute": 200,
+        "max_requests_per_hour": 12000,
+        "timeout_seconds": 3,
+        "connection_pool_size": 50,
+        "connection_pool_ttl": 300,
+        "retry_attempts": 3,
+        "retry_backoff_factor": 1.2,
+        "circuit_breaker_threshold": 5,
+        "circuit_breaker_timeout": 30,
+        "enabled": false
+      },
+      "rate_limiting": {
+        "requests_per_second": 3.33,
+        "requests_per_minute": 200,
+        "requests_per_hour": 12000,
+        "burst_allowance": 100,
+        "rate_limit_strategy": "enterprise_tier_management",
+        "cooldown_period": 0.3,
+        "rate_limit_enforcement": "provider_managed",
+        "tier_limits": "professional_199_monthly"
+      },
+      "endpoints": {
+        "quote_endpoint": "https://api.polygon.io/v2/last/nbbo/{symbol}",
+        "historical_endpoint": "https://api.polygon.io/v2/aggs/ticker/{symbol}/range",
+        "trades_endpoint": "https://api.polygon.io/v3/trades/{symbol}",
+        "websocket_endpoint": "wss://ws.polygon.io/stocks"
+      },
+      "capabilities": {
+        "real_time_quotes": true,
+        "historical_data": true,
+        "tick_level_data": true,
+        "options_data": true,
+        "crypto_data": true,
+        "forex_data": true,
+        "batch_requests": true,
+        "websocket_streaming": true,
+        "max_symbols_per_batch": 1000,
+        "max_historical_years": 50,
+        "data_delay_minutes": 0,
+        "enterprise_features": ["sub_millisecond_latency", "full_market_depth", "institutional_data"]
+      }
+    }
+  },
+  
+  "failover_configuration": {
+    "failover_strategy": "weighted_round_robin_with_circuit_breakers",
+    "primary_provider": "yahoo_finance",
+    "secondary_provider": "alpha_vantage",
+    "premium_provider": "iex_cloud",
+    "enterprise_provider": "polygon_io",
+    "failover_sequence": [
+      "yahoo_finance",
+      "alpha_vantage", 
+      "iex_cloud",
+      "polygon_io"
+    ],
+    "global_timeout_seconds": 30,
+    "max_concurrent_providers": 2,
+    "circuit_breaker_global_threshold": 10,
+    "health_check_interval": 300,
+    "failover_backoff_strategy": "exponential",
+    "cache_fallback_enabled": true,
+    "cache_fallback_ttl": 3600
+  },
+  
+  "security_configuration": {
+    "encryption_settings": {
+      "dpapi_enabled": true,
+      "envelope_encryption": true,
+      "master_key_source": "windows_dpapi_machine_store",
+      "data_key_algorithm": "AES-256-GCM",
+      "key_derivation_rounds": 100000,
+      "salt_generation": "cryptographically_secure_random",
+      "integrity_verification": "hmac_sha256"
+    },
+    "credential_validation": {
+      "cache_ttl_minutes": 30,
+      "refresh_threshold_minutes": 5,
+      "validation_timeout_seconds": 10,
+      "max_failed_validations": 3,
+      "validation_backoff_factor": 2.0,
+      "credential_health_check_enabled": true
+    },
+    "audit_logging": {
+      "log_credential_access": true,
+      "log_rotation_events": true,
+      "log_validation_failures": true,
+      "log_encryption_operations": false,
+      "retention_days": 180,
+      "correlation_id_tracking": true
+    },
+    "compliance_settings": {
+      "encryption_standard": "FIPS_140_2_LEVEL_2",
+      "key_rotation_enforcement": true,
+      "minimum_key_strength": 256,
+      "secure_deletion": true,
+      "tamper_evidence": true
+    }
+  },
+  
+  "performance_optimization": {
+    "connection_pooling": {
+      "global_pool_enabled": true,
+      "pool_size_per_provider": {
+        "yahoo_finance": 10,
+        "alpha_vantage": 2,
+        "iex_cloud": 20,
+        "polygon_io": 50
+      },
+      "pool_ttl_seconds": 300,
+      "pool_cleanup_interval": 600,
+      "keep_alive_enabled": true,
+      "connection_reuse_strategy": "provider_optimized"
+    },
+    "caching_strategy": {
+      "credential_cache_enabled": true,
+      "credential_cache_ttl": 1800,
+      "response_cache_enabled": true,
+      "response_cache_ttl": {
+        "quotes": 300,
+        "historical": 3600,
+        "fundamental": 7200
+      },
+      "cache_warming_enabled": true,
+      "cache_compression": "gzip"
+    },
+    "request_optimization": {
+      "batch_request_enabled": true,
+      "request_deduplication": true,
+      "intelligent_request_spacing": true,
+      "adaptive_timeout_adjustment": true,
+      "provider_performance_tracking": true,
+      "dynamic_weight_calculation": true
+    }
+  },
+  
+  "monitoring_and_alerting": {
+    "provider_health_monitoring": {
+      "health_check_enabled": true,
+      "health_check_interval_seconds": 300,
+      "health_check_timeout_seconds": 10,
+      "performance_metrics_collection": true,
+      "circuit_breaker_monitoring": true,
+      "latency_threshold_ms": 2000,
+      "error_rate_threshold_percent": 10
+    },
+    "alert_configuration": {
+      "credential_expiry_alerts": true,
+      "quota_exhaustion_alerts": true,
+      "provider_failure_alerts": true,
+      "performance_degradation_alerts": true,
+      "security_incident_alerts": true,
+      "alert_cooldown_minutes": 15
+    },
+    "notification_settings": {
+      "windows_notifications_enabled": true,
+      "log_file_notifications": true,
+      "email_notifications_enabled": false,
+      "sms_notifications_enabled": false,
+      "notification_severity_threshold": "WARNING"
+    }
+  },
+  
+  "integration_settings": {
+    "settings_tab_integration": {
+      "ui_refresh_interval_seconds": 5,
+      "real_time_status_updates": true,
+      "credential_masking_enabled": true,
+      "provider_test_connections": true,
+      "bulk_configuration_import": true,
+      "configuration_validation": true
+    },
+    "data_integration_layer": {
+      "automatic_provider_selection": true,
+      "load_balancing_enabled": true,
+      "provider_weight_adjustment": true,
+      "concurrent_request_management": true,
+      "intelligent_failover_logic": true,
+      "performance_based_routing": true
+    },
+    "database_integration": {
+      "configuration_persistence": true,
+      "metrics_storage": true,
+      "audit_trail_storage": true,
+      "performance_history": true,
+      "backup_configuration_enabled": true,
+      "configuration_versioning": true
+    }
+  }
+}
