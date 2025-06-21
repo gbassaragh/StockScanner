@@ -1,0 +1,439 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "last_updated": "2024-01-15T10:30:00.000Z",
+    "cache_description": "Provider performance metrics cache for Strategy pattern provider selection and intelligent failover decision making",
+    "update_frequency_seconds": 30,
+    "retention_policy_days": 30,
+    "data_integrity_hash": null
+  },
+  "provider_performance_metrics": {
+    "yahoo_finance": {
+      "provider_name": "yahoo_finance",
+      "base_weight": 40,
+      "current_weight": 40,
+      "performance_metrics": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "success_rate_percentage": 100.0,
+        "failure_rate_percentage": 0.0,
+        "average_response_time_ms": 0.0,
+        "min_response_time_ms": 0.0,
+        "max_response_time_ms": 0.0,
+        "p95_response_time_ms": 0.0,
+        "p99_response_time_ms": 0.0
+      },
+      "circuit_breaker_metrics": {
+        "current_state": "CLOSED",
+        "failure_count": 0,
+        "success_count": 0,
+        "last_failure_time": null,
+        "last_success_time": null,
+        "state_change_history": [],
+        "failure_threshold": 5,
+        "recovery_timeout_seconds": 60,
+        "half_open_test_count": 0
+      },
+      "rate_limiting_metrics": {
+        "requests_per_minute_limit": 60,
+        "current_requests_per_minute": 0,
+        "rate_limit_violations": 0,
+        "last_rate_limit_reset": null,
+        "throttling_active": false,
+        "backoff_delay_seconds": 0
+      },
+      "health_metrics": {
+        "availability_percentage": 100.0,
+        "data_quality_score": 100.0,
+        "last_health_check": null,
+        "consecutive_failures": 0,
+        "consecutive_successes": 0,
+        "error_types": {},
+        "timeout_count": 0,
+        "connection_errors": 0
+      },
+      "provider_specific_metrics": {
+        "api_endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/",
+        "api_version": "v8",
+        "supported_symbols_limit": 100,
+        "historical_data_limit_days": 365,
+        "real_time_capability": true,
+        "streaming_capability": false,
+        "cost_per_request": 0.0,
+        "tier": "free"
+      },
+      "trending_data": {
+        "hourly_success_rates": [],
+        "daily_averages": [],
+        "weekly_trends": [],
+        "performance_degradation_alerts": [],
+        "improvement_trends": []
+      },
+      "last_request_details": {
+        "timestamp": null,
+        "request_type": null,
+        "symbols_requested": [],
+        "response_time_ms": null,
+        "success": null,
+        "error_message": null,
+        "cache_hit": null
+      }
+    },
+    "iex_cloud": {
+      "provider_name": "iex_cloud",
+      "base_weight": 30,
+      "current_weight": 30,
+      "performance_metrics": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "success_rate_percentage": 100.0,
+        "failure_rate_percentage": 0.0,
+        "average_response_time_ms": 0.0,
+        "min_response_time_ms": 0.0,
+        "max_response_time_ms": 0.0,
+        "p95_response_time_ms": 0.0,
+        "p99_response_time_ms": 0.0
+      },
+      "circuit_breaker_metrics": {
+        "current_state": "CLOSED",
+        "failure_count": 0,
+        "success_count": 0,
+        "last_failure_time": null,
+        "last_success_time": null,
+        "state_change_history": [],
+        "failure_threshold": 3,
+        "recovery_timeout_seconds": 30,
+        "half_open_test_count": 0
+      },
+      "rate_limiting_metrics": {
+        "requests_per_minute_limit": 100,
+        "current_requests_per_minute": 0,
+        "rate_limit_violations": 0,
+        "last_rate_limit_reset": null,
+        "throttling_active": false,
+        "backoff_delay_seconds": 0
+      },
+      "health_metrics": {
+        "availability_percentage": 100.0,
+        "data_quality_score": 100.0,
+        "last_health_check": null,
+        "consecutive_failures": 0,
+        "consecutive_successes": 0,
+        "error_types": {},
+        "timeout_count": 0,
+        "connection_errors": 0
+      },
+      "provider_specific_metrics": {
+        "api_endpoint": "https://cloud.iexapis.com/stable/",
+        "api_version": "stable",
+        "supported_symbols_limit": 500,
+        "historical_data_limit_days": 1825,
+        "real_time_capability": true,
+        "streaming_capability": true,
+        "websocket_endpoint": "wss://ws-api.iextrading.com/1.0/tops",
+        "cost_per_request": 0.01,
+        "tier": "premium"
+      },
+      "trending_data": {
+        "hourly_success_rates": [],
+        "daily_averages": [],
+        "weekly_trends": [],
+        "performance_degradation_alerts": [],
+        "improvement_trends": []
+      },
+      "last_request_details": {
+        "timestamp": null,
+        "request_type": null,
+        "symbols_requested": [],
+        "response_time_ms": null,
+        "success": null,
+        "error_message": null,
+        "cache_hit": null
+      }
+    },
+    "alpha_vantage": {
+      "provider_name": "alpha_vantage",
+      "base_weight": 20,
+      "current_weight": 20,
+      "performance_metrics": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "success_rate_percentage": 100.0,
+        "failure_rate_percentage": 0.0,
+        "average_response_time_ms": 0.0,
+        "min_response_time_ms": 0.0,
+        "max_response_time_ms": 0.0,
+        "p95_response_time_ms": 0.0,
+        "p99_response_time_ms": 0.0
+      },
+      "circuit_breaker_metrics": {
+        "current_state": "CLOSED",
+        "failure_count": 0,
+        "success_count": 0,
+        "last_failure_time": null,
+        "last_success_time": null,
+        "state_change_history": [],
+        "failure_threshold": 2,
+        "recovery_timeout_seconds": 120,
+        "half_open_test_count": 0
+      },
+      "rate_limiting_metrics": {
+        "requests_per_minute_limit": 5,
+        "current_requests_per_minute": 0,
+        "rate_limit_violations": 0,
+        "last_rate_limit_reset": null,
+        "throttling_active": false,
+        "backoff_delay_seconds": 12
+      },
+      "health_metrics": {
+        "availability_percentage": 100.0,
+        "data_quality_score": 100.0,
+        "last_health_check": null,
+        "consecutive_failures": 0,
+        "consecutive_successes": 0,
+        "error_types": {},
+        "timeout_count": 0,
+        "connection_errors": 0
+      },
+      "provider_specific_metrics": {
+        "api_endpoint": "https://www.alphavantage.co/query",
+        "api_version": "1.1",
+        "supported_symbols_limit": 25,
+        "historical_data_limit_days": 7300,
+        "real_time_capability": false,
+        "streaming_capability": false,
+        "cost_per_request": 0.0,
+        "tier": "free",
+        "daily_quota_limit": 25,
+        "daily_quota_used": 0
+      },
+      "trending_data": {
+        "hourly_success_rates": [],
+        "daily_averages": [],
+        "weekly_trends": [],
+        "performance_degradation_alerts": [],
+        "improvement_trends": []
+      },
+      "last_request_details": {
+        "timestamp": null,
+        "request_type": null,
+        "symbols_requested": [],
+        "response_time_ms": null,
+        "success": null,
+        "error_message": null,
+        "cache_hit": null
+      }
+    },
+    "premium_providers": {
+      "provider_name": "premium_providers",
+      "base_weight": 10,
+      "current_weight": 10,
+      "performance_metrics": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "success_rate_percentage": 100.0,
+        "failure_rate_percentage": 0.0,
+        "average_response_time_ms": 0.0,
+        "min_response_time_ms": 0.0,
+        "max_response_time_ms": 0.0,
+        "p95_response_time_ms": 0.0,
+        "p99_response_time_ms": 0.0
+      },
+      "circuit_breaker_metrics": {
+        "current_state": "CLOSED",
+        "failure_count": 0,
+        "success_count": 0,
+        "last_failure_time": null,
+        "last_success_time": null,
+        "state_change_history": [],
+        "failure_threshold": 3,
+        "recovery_timeout_seconds": 60,
+        "half_open_test_count": 0
+      },
+      "rate_limiting_metrics": {
+        "requests_per_minute_limit": 1000,
+        "current_requests_per_minute": 0,
+        "rate_limit_violations": 0,
+        "last_rate_limit_reset": null,
+        "throttling_active": false,
+        "backoff_delay_seconds": 0
+      },
+      "health_metrics": {
+        "availability_percentage": 100.0,
+        "data_quality_score": 100.0,
+        "last_health_check": null,
+        "consecutive_failures": 0,
+        "consecutive_successes": 0,
+        "error_types": {},
+        "timeout_count": 0,
+        "connection_errors": 0
+      },
+      "provider_specific_metrics": {
+        "api_endpoint": "https://api.premium-provider.com/v1/",
+        "api_version": "v1",
+        "supported_symbols_limit": 10000,
+        "historical_data_limit_days": 3650,
+        "real_time_capability": true,
+        "streaming_capability": true,
+        "cost_per_request": 0.05,
+        "tier": "premium"
+      },
+      "trending_data": {
+        "hourly_success_rates": [],
+        "daily_averages": [],
+        "weekly_trends": [],
+        "performance_degradation_alerts": [],
+        "improvement_trends": []
+      },
+      "last_request_details": {
+        "timestamp": null,
+        "request_type": null,
+        "symbols_requested": [],
+        "response_time_ms": null,
+        "success": null,
+        "error_message": null,
+        "cache_hit": null
+      }
+    }
+  },
+  "global_metrics": {
+    "total_providers_available": 4,
+    "active_providers": 4,
+    "providers_in_circuit_breaker": 0,
+    "overall_system_health": 100.0,
+    "last_provider_selection": null,
+    "provider_selection_algorithm": "weighted_random_selection",
+    "failover_events_today": 0,
+    "total_requests_across_providers": 0,
+    "average_response_time_across_providers": 0.0,
+    "data_quality_score_aggregate": 100.0
+  },
+  "strategy_pattern_config": {
+    "selection_algorithm": "weighted_random_selection",
+    "weight_adjustment_factors": {
+      "success_rate_modifier": {
+        "excellent_threshold": 95.0,
+        "excellent_bonus": 0.2,
+        "good_threshold": 90.0,
+        "good_bonus": 0.1,
+        "poor_threshold": 80.0,
+        "poor_penalty": -0.3,
+        "fair_penalty": -0.1
+      },
+      "response_time_modifier": {
+        "fast_threshold_ms": 500,
+        "fast_bonus": 0.15,
+        "slow_threshold_ms": 2000,
+        "slow_penalty": -0.15
+      },
+      "circuit_breaker_modifier": {
+        "open_penalty": -0.5,
+        "half_open_penalty": -0.2,
+        "closed_bonus": 0.0
+      }
+    },
+    "minimum_weight": 1,
+    "maximum_weight": 100,
+    "rebalancing_frequency_seconds": 60,
+    "performance_lookback_window_hours": 24
+  },
+  "circuit_breaker_config": {
+    "global_settings": {
+      "failure_detection_window_minutes": 5,
+      "minimum_requests_threshold": 10,
+      "half_open_max_calls": 3,
+      "state_change_notification_enabled": true
+    },
+    "provider_thresholds": {
+      "yahoo_finance": {
+        "failure_threshold": 5,
+        "timeout_threshold_seconds": 10,
+        "recovery_timeout_seconds": 60
+      },
+      "iex_cloud": {
+        "failure_threshold": 3,
+        "timeout_threshold_seconds": 5,
+        "recovery_timeout_seconds": 30
+      },
+      "alpha_vantage": {
+        "failure_threshold": 2,
+        "timeout_threshold_seconds": 15,
+        "recovery_timeout_seconds": 120
+      },
+      "premium_providers": {
+        "failure_threshold": 3,
+        "timeout_threshold_seconds": 5,
+        "recovery_timeout_seconds": 60
+      }
+    }
+  },
+  "performance_alerting": {
+    "alert_rules": [
+      {
+        "rule_name": "provider_high_failure_rate",
+        "condition": "failure_rate_percentage > 20",
+        "severity": "warning",
+        "enabled": true,
+        "notification_channels": ["desktop_notification", "log_file"]
+      },
+      {
+        "rule_name": "provider_slow_response",
+        "condition": "average_response_time_ms > 5000",
+        "severity": "warning",
+        "enabled": true,
+        "notification_channels": ["desktop_notification", "log_file"]
+      },
+      {
+        "rule_name": "circuit_breaker_opened",
+        "condition": "circuit_breaker_state == 'OPEN'",
+        "severity": "critical",
+        "enabled": true,
+        "notification_channels": ["desktop_notification", "log_file", "email"]
+      },
+      {
+        "rule_name": "all_providers_degraded",
+        "condition": "overall_system_health < 50",
+        "severity": "critical",
+        "enabled": true,
+        "notification_channels": ["desktop_notification", "log_file", "email"]
+      }
+    ],
+    "notification_settings": {
+      "desktop_notification_enabled": true,
+      "email_notifications_enabled": false,
+      "log_file_path": "logs/provider_alerts.log",
+      "alert_cooldown_minutes": 15
+    }
+  },
+  "cache_management": {
+    "auto_cleanup_enabled": true,
+    "cleanup_interval_hours": 24,
+    "max_file_size_mb": 50,
+    "compress_old_data": true,
+    "data_integrity_validation": true,
+    "backup_before_cleanup": true,
+    "retention_policies": {
+      "trending_data_days": 30,
+      "alert_history_days": 90,
+      "performance_metrics_days": 365
+    }
+  },
+  "integration_metadata": {
+    "compatible_data_integration_version": "1.0.0",
+    "required_strategy_pattern_features": [
+      "weighted_provider_selection",
+      "dynamic_weight_adjustment",
+      "circuit_breaker_integration",
+      "performance_trending"
+    ],
+    "database_sync_enabled": true,
+    "last_database_sync": null,
+    "file_format_version": "1.0.0",
+    "created_by": "blitzy_agent",
+    "creation_timestamp": "2024-01-15T10:30:00.000Z"
+  }
+}
